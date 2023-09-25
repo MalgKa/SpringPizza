@@ -19,7 +19,7 @@
             <td>${item.price}</td>
             <td>
                 <button>addToOrder</button>
-                <button>details</button>
+                <button><a href='<c:url value='/item/details'><c:param name='itemId' value='${item.id}'/></c:url>'>details</a></button>
             </td>
         </tr>
     </c:forEach>
