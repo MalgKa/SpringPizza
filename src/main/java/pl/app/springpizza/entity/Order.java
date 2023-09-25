@@ -34,6 +34,14 @@ public class Order {
     @JoinColumn(name = "status_id")
     private Status status;
 
+
+
+    @PrePersist
+    public void prePersist() {
+        orderTime = LocalDateTime.now();
+    }
+
+
     public Long getId() {
         return id;
     }
