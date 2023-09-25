@@ -10,7 +10,7 @@ public class Place {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String name;
+    private String color;
 
     public Long getId() {
         return id;
@@ -20,19 +20,19 @@ public class Place {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getColor() {
+        return color;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     @Override
     public String toString() {
         return "Place{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", color='" + color + '\'' +
                 '}';
     }
 }
