@@ -18,7 +18,7 @@
             <td>${item.shortDescription}</td>
             <td>${item.price}</td>
             <td>
-                <button>addToOrder</button>
+                <button><a href='<c:url value='/addToCart'><c:param name='itemId' value='${item.id}'/></c:url>'>add to order</a></button>
                 <button><a href='<c:url value='/item/details'><c:param name='itemId' value='${item.id}'/></c:url>'>details</a></button>
             </td>
         </tr>
