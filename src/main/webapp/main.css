@@ -30,4 +30,9 @@ h4 {
 
 table{
     background-color: white;
+
+}
+
+td {
+    padding-inline: 2rem;
 }
