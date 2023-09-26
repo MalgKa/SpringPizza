@@ -24,5 +24,6 @@
         </tr>
     </c:forEach>
 </table>
+<button><a href="/cart">order summary</a></button>
 </body>
 </html>

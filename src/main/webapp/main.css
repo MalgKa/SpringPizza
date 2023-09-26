@@ -1,17 +1,33 @@
-.container{
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
     margin: 0 auto;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
 
 }
 
 
-
-h1{
+h1 {
     color: red;
 }
-h4{
+
+h4 {
     width: 50%;
     line-height: 30px;
+}
+
+.order-panel {
+    min-height: 100vh;
+    background-size: cover;
+    background-image: url("img/bgc2.jpg")
+}
+
+table{
+    background-color: white;
 }
