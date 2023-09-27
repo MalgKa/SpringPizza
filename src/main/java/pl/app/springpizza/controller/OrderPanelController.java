@@ -28,14 +28,20 @@ public class OrderPanelController {
     }
 
     @GetMapping("order/panel")
-    public String allOrders(Model model, @RequestParam(required = false) Long orderToEditId) {
+    public String allOrders(Model model, @RequestParam(required = false) Long orderToEditId, @RequestParam(required = false) Long statusId) {
         if (orderToEditId != null) {
             Order orderToEdit = orderRepository.getOrderById(orderToEditId);
             model.addAttribute("orderToedit", orderToEdit);
         }
+
+        if(statusId != null){
+            model.addAttribute("orderList", orderRepository.findAllByStatusId(statusId));
+            System.out.println(orderRepository.findAllByStatusId(statusId));
+        }else{
+            model.addAttribute("orderList", orderRepository.findAll());
+        }
         model.addAttribute("placeList", placeRepository.findAll());
         model.addAttribute("statusList", statusRepository.findAll());
-        model.addAttribute("orderList", orderRepository.findAll());
         return "order-panel";
     }
 
