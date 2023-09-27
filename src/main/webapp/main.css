@@ -24,15 +24,26 @@ h4 {
 
 .order-panel {
     min-height: 100vh;
+    display: flex;
     background-size: cover;
     background-image: url("img/bgc2.jpg")
 }
 
-table{
-    background-color: white;
 
+.container-center{
+    justify-content: center;
 }
 
-td {
-    padding-inline: 2rem;
+.order-panel-table{
+    border-color: #390dfd;
 }
+/*table{*/
+/*    background-color: white;*/
+
+/*}*/
+
+/*td {*/
+/*    padding-inline: 2rem;*/
+/*}*/
+
+

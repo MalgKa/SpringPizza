@@ -2,24 +2,31 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
 <html>
 <head>
     <title>Title</title>
+    <%--    <meta charset="utf-8">--%>
+    <%--    <meta name="viewport" content="width=device-width, initial-scale=1">--%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="/main.css" type="text/css">
 </head>
 <body class="order-panel">
 <h1>Admin Panel</h1>
-<table cellspacing="3" border="2">
+<div class="container container-center w-50">
+<table class="table table-striped table-hover opacity-75 order-panel-table">
+    <thead>
     <tr>
-        <th>order id</th>
-        <th>time</th>
-        <th>place</th>
-        <th>status</th>
-        <th>sum</th>
-        <th>action</th>
+        <th scope="col">order id</th>
+        <th scope="col">time</th>
+        <th scope="col">place</th>
+        <th scope="col">status</th>
+        <th scope="col">sum</th>
+        <th scope="col">action</th>
     </tr>
-
-
+    </thead>
+    <tbody>
     <c:forEach items="${orderList}" var="order">
         <tr>
             <c:choose>
@@ -27,32 +34,38 @@
                     <form:form method="post" modelAttribute="orderToedit">
                         <td>${order.id}</td>
                         <td><form:input path="orderTime"/></td>
-                        <td><form:input path="place.color"/></td>
-                        <td><form:input path="status.name"/></td>
+                        <td><form:select path="place.id" items="${placeList}" itemValue="id" itemLabel="color"/></td>
+                        <td><form:select path="status.id" items="${statusList}" itemValue="id" itemLabel="name"/></td>
                         <td><form:input path="sum"/></td>
-                        <td><form:button name="edit"/>save changes
-                            <form:button><a href="/order/panel">back</a></form:button>
+                        <form:hidden path="id"/>
+                        <form:hidden path="itemList"/>;
+                        <td><form:button class="btn btn-danger" name="edit">save changes</form:button>
+                            <button class="btn btn-info"><a href="/order/panel" class="link dark text-decoration-none text-white">back</a></button>
                         </td>
                     </form:form>
                 </c:when>
 
-               <c:otherwise>
-                   <td>${order.id}</td>
-                   <td>${order.orderTime}</td>
-                   <td>${order.place.color}</td>
-                   <td>${order.status.name}</td>
-                   <td>${order.sum}</td>
-                   <td>
-                       <button><a href="/items/order?orderId=${order.id}">details</a></button>
-                       <button><a href="/order/panel?orderId=${order.id}">edit</a></button>
-                   </td>
-               </c:otherwise>
+                <c:otherwise>
+                    <td>${order.id}</td>
+                    <td>${order.orderTime}</td>
+                    <td>${order.place.color}</td>
+                    <td>${order.status.name}</td>
+                    <td>${order.sum}</td>
+                    <td>
+                        <button class="btn btn-warning"><a href="/items/order?orderId=${order.id}" class="text-decoration-none link-body-emphasis">details</a></button>
+                        <button class="btn btn-success"><a href="/order/panel?orderToEditId=${order.id}" class="text-decoration-none link-light">edit</a></button>
+                    </td>
+                </c:otherwise>
 
             </c:choose>
         </tr>
     </c:forEach>
 
-
+    </tbody>
 </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 </html>
