@@ -52,5 +52,24 @@ h4 {
     color: white;
 }
 
+/*home component*/
+
+.my-grid-container{
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+}
+
+.my-gird{
+    grid-column: 2;
+}
+.menu-text{
+    color: antiquewhite;
+    font-size: 4rem;
+}
+
+h3 {
+    color: aliceblue;
+}
+
 
 
