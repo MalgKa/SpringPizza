@@ -65,6 +65,26 @@ public class OrderController {
         return "cart";
     }
 
+    @GetMapping("/removeFromCart")
+    public String removeItemFromCart(@RequestParam Long itemId /*, Model model*/) { //TODO
+        System.out.println(itemId);
+
+        List<Item> itemsInCart = cart.getOrder().getItemList();
+
+        for (int i = 0; i <itemsInCart.size() ; i++) {
+            if (itemsInCart.get(i).getId().equals(itemId)){
+                itemsInCart.remove(itemsInCart.get(i));
+            }
+        }
+        return "redirect:/cart";
+    }
+
+    @GetMapping("/removeAllFromCart")
+    public String removeAllItemsFromCart(){
+        cart.clear();
+        return "redirect:/cart";
+    }
+
     @PostMapping("/order/agreed")
     public String proceedOrder(@RequestParam Long placeId, @RequestParam Double sum, Model model) {
         Order order = cart.getOrder();
