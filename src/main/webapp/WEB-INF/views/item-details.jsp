@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/main.css">
+    <link rel="stylesheet" type="text/css" href="/orderPanel.css">
 </head>
 <body>
 <div class="container">
