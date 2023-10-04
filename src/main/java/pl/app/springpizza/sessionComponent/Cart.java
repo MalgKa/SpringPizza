@@ -25,6 +25,5 @@ public class Cart {
 
     public void clear() {
         order = new Order();
-//        order.setStatus("new");//TODO
     }
 }
