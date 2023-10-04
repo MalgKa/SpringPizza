@@ -18,7 +18,7 @@
 <div class="my-grid-container">
     <div class="container w-60 my-gird">
         <h1 class="menu-text">M E N U</h1>
-        <h3>pizza</h3>
+        <h3>PIZZA</h3>
         <table class="table table-striped table-hover home-table">
             <tr>
                 <th class="col-3">name</th>
@@ -40,7 +40,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <h3>pasta</h3>
+        <h3>PASTA</h3>
         <table class="table table-striped table-hover home-table">
             <tr>
                 <th class="col-3">name</th>
@@ -62,7 +62,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <h3>desert</h3>
+        <h3>DESSERT</h3>
         <table class="table table-striped table-hover home-table">
             <tr>
                 <th class="col-3">name</th>
@@ -84,7 +84,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <h3>drinks</h3>
+        <h3>DRINKS</h3>
         <table class="table table-striped table-hover home-table">
             <tr>
                 <th class="col-3">name</th>

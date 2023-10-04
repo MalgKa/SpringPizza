@@ -68,7 +68,7 @@
 
                     <c:otherwise>
                         <td>${order.id}</td>
-                        <td>${order.orderTime}</td>
+                        <td>${order.orderTimeFormatted}</td>
                         <td>${order.place.color}</td>
                         <td>${order.status.name}</td>
                         <td>${order.sum}</td>

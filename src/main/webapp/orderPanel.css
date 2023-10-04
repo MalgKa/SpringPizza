@@ -13,9 +13,6 @@
 }
 
 
-h1 {
-    color: red;
-}
 
 h4 {
     width: 50%;
@@ -47,7 +44,17 @@ h4 {
     color: white;
 }
 
+/*items-in-order*/
 
+h1 {
+    color: antiquewhite;
+    margin-bottom: 3rem;
+}
 
+li{
+    margin-top: 2rem;
+    color: aliceblue;
+    font-size: 2rem;
+}
 
 

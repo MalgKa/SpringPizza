@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.details-container {
+    min-height: 100vh;
+    display: flex;
+    background-size: cover;
+    background-image: url("img/chalkboard.jpg");
+
+}
+
+.description {
+    color: antiquewhite;
+    text-align: center;
+}
+
+.description h4 {
+    font-family: 'Caveat', cursive;
+    font-size: 3rem;
+}
+.description h1 {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 5rem;
+}

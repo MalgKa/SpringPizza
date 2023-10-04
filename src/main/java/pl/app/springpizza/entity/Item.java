@@ -15,6 +15,7 @@ public class Item {
     @Column(name="short_description")
     private String shortDescription;
 
+    @Column(length = 1024)
     private String description;
 
     private String type;

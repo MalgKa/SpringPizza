@@ -3,6 +3,7 @@ package pl.app.springpizza.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +61,11 @@ public class Order {
 
     public LocalDateTime getOrderTime() {
         return orderTime;
+    }
+
+    public String getOrderTimeFormatted(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        return formatter.format(getOrderTime());
     }
 
     public void setOrderTime(LocalDateTime orderTime) {

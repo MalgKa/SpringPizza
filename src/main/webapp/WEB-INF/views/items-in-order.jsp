@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/orderPanel.css" type="text/css">
 </head>
 <body class="order-panel">
-<div class="container container-center w-50">
+<div class="container container-center mt-auto w-50">
   <h1>Items in order:</h1>
   <ul>
     <c:forEach var="item" items="${items}">
