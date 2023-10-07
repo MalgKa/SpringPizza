@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.cart {
+    min-height: 100vh;
+    display: flex;
+    background-size: cover;
+    background-image: url("img/cart.jpg")
+}
+
+.btn {
+    opacity: 70%;
+}
+
+table {
+    opacity: 70%;
+}
+
+.cart-container {
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+h1 {
+    color: #733708;
+    font-weight: bold;
+}
+
+.cart-link {
+    color: black;
+    font-weight: bold;
+}
+
+i {
+    padding-left: 5px;
+}
+.confirmation {
+    margin-top: 5rem;
+}

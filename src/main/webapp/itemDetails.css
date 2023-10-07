@@ -29,7 +29,37 @@
     font-family: 'Caveat', cursive;
     font-size: 3rem;
 }
+
 .description h1 {
     font-family: 'Caveat Brush', cursive;
     font-size: 5rem;
 }
+
+img {
+    margin-bottom: 1rem;
+}
+
+/*buttons*/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 3fr 6fr 3fr;
+}
+
+.addToOrder-btn {
+    align-self: end;
+    margin-bottom: 6rem;
+    opacity: 70%;
+}
+
+.back-btn {
+    align-self: end;
+    justify-self: end;
+    margin-bottom: 6rem;
+    opacity: 80%;
+}
+
+i {
+    padding-left: 5px;
+}
+
