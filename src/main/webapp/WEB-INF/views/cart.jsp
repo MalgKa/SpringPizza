@@ -13,7 +13,7 @@
     <h1 class="mb-5">summary of your order: ${sum} zł</h1>
 <div class="w-50">
     <table class="table table-hover">
-        <c:forEach items="${cart.itemList}" var="item">
+        <c:forEach items="${sortedItemList}" var="item">
             <tr>
                 <td>${item.name}</td>
                 <td>${item.price}</td>

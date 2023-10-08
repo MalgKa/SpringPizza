@@ -13,8 +13,8 @@ import pl.app.springpizza.repository.OrderRepository;
 import pl.app.springpizza.repository.PlaceRepository;
 import pl.app.springpizza.repository.StatusRepository;
 import pl.app.springpizza.sessionComponent.Cart;
-import java.util.List;
-import java.util.Optional;
+
+import java.util.*;
 
 @Controller
 public class OrderController {
@@ -40,15 +40,18 @@ public class OrderController {
         System.out.println(itemId);
         Optional<Item> item = itemRepository.findById(itemId);
         item.ifPresent(cart::add);
-        Message message;
-        if (item.isPresent()) {
-            message = new Message("Added", item.get().getName() + " added to the order");
-        } else {
-            message = new Message("not added", " incorrect order ID provided: " + itemId);
-        }
-        model.addAttribute("message", message);
-        System.out.println(cart.getOrder().toString());
-        return "message";
+//        Message message;
+//        if (item.isPresent()) {
+//            message = new Message("Added", item.get().getName() + " added to the order");
+//        } else {
+//            message = new Message("not added", " incorrect order ID provided: " + itemId);
+//        }
+//        model.addAttribute("message", message);
+//        System.out.println(cart.getOrder().toString());
+//        return "message";
+
+        return "redirect:/home";
+
     }
 
     @GetMapping("/cart")
@@ -59,23 +62,21 @@ public class OrderController {
                 .getItemList().stream()
                 .mapToDouble(Item::getPrice)
                 .sum();
+        List<Item> sortedItemList = new ArrayList<>(cart.getOrder().getItemList());
+        sortedItemList.sort(Comparator.comparingInt(item -> item.getId().intValue()));
         model.addAttribute("placeList", placeList);
+        model.addAttribute("sortedItemList",sortedItemList);
         model.addAttribute("cart", cart.getOrder());
         model.addAttribute("sum", Math.floor(sum * 100) / 100);
         return "cart";
     }
 
     @GetMapping("/removeFromCart")
-    public String removeItemFromCart(@RequestParam Long itemId /*, Model model*/) { //TODO
-        System.out.println(itemId);
-
+    public String removeItemFromCart(@RequestParam Long itemId) {
         List<Item> itemsInCart = cart.getOrder().getItemList();
-
-        for (int i = 0; i <itemsInCart.size() ; i++) {
-            if (itemsInCart.get(i).getId().equals(itemId)){
-                itemsInCart.remove(itemsInCart.get(i));
-            }
-        }
+        itemsInCart.stream()
+                .filter(i -> i.getId().equals(itemId))
+                .findFirst().ifPresent(itemsInCart::remove);
         return "redirect:/cart";
     }
 

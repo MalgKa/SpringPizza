@@ -18,6 +18,9 @@
 <div class="my-grid-container">
     <div class="container w-60 my-gird">
         <h1 class="menu-text">M E N U</h1>
+        <div class="my-toast my-toast--hidden">
+            product added to the order
+        </div>
         <h3>PIZZA</h3>
         <table class="table table-striped table-hover home-table">
             <tr>
@@ -33,7 +36,7 @@
                     <td>${item.price}</td>
                     <td>
                         <a href='<c:url value='/addToCart'><c:param name='itemId' value='${item.id}'/></c:url>'
-                           class="btn btn-primary">add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
+                           class="btn btn-primary" onclick='Toasty()'>add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
                         <a href='<c:url value='/item/details'><c:param name='itemId' value='${item.id}'/></c:url>'
                            class="btn btn-warning">details<i class="fa-solid fa-circle-info fa-shake"></i></a>
                     </td>
@@ -55,7 +58,7 @@
                     <td>${item.price}</td>
                     <td>
                         <a href='<c:url value='/addToCart'><c:param name='itemId' value='${item.id}'/></c:url>'
-                           class="btn btn-primary">add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
+                           class="btn btn-primary" onclick='Toasty()'>add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
                         <a href='<c:url value='/item/details'><c:param name='itemId' value='${item.id}'/></c:url>'
                            class="btn btn-warning">details<i class="fa-solid fa-circle-info fa-shake"></i></a>
                     </td>
@@ -77,7 +80,7 @@
                     <td>${item.price}</td>
                     <td>
                         <a href='<c:url value='/addToCart'><c:param name='itemId' value='${item.id}'/></c:url>'
-                           class="btn btn-primary">add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
+                           class="btn btn-primary" onclick='Toasty()'>add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
                         <a href='<c:url value='/item/details'><c:param name='itemId' value='${item.id}'/></c:url>'
                            class="btn btn-warning">details<i class="fa-solid fa-circle-info fa-shake"></i></a>
                     </td>
@@ -99,7 +102,7 @@
                     <td>${item.price}</td>
                     <td>
                         <a href='<c:url value='/addToCart'><c:param name='itemId' value='${item.id}'/></c:url>'
-                           class="btn btn-primary">add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
+                           class="btn btn-primary" onclick='Toasty()'>add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
                         <a href='<c:url value='/item/details'><c:param name='itemId' value='${item.id}'/></c:url>'
                            class="btn btn-warning">details<i class="fa-solid fa-circle-info fa-shake"></i></a>
                     </td>
@@ -112,5 +115,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+<script src="/toast.js"></script>
 </body>
 </html>

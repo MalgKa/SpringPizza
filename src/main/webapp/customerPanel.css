@@ -50,3 +50,32 @@ i{
     font-family: 'Caveat', cursive;
     font-size: 1.6rem;
 }
+
+/*toast*/
+.my-toast {
+    position: fixed;
+    top: 0;
+    margin: auto;
+
+    max-width: 300px;
+    padding: 6px;
+    background: lightgreen;
+    color: #333333;
+    font-family: sans-serif;
+    text-align: center;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    transition: opacity 0.2s, top 0.2s
+}
+
+.my-toast--visible {
+    top: 100px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.my-toast--hidden{
+    visibility: hidden;
+    opacity: 0;
+
+}
