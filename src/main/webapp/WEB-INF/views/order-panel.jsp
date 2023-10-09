@@ -18,19 +18,19 @@
     <h1 class="mb-5 admin-panel-text">Admin Panel</h1>
     <div class="d-md-flex flex-row gap-4 order-panel-flex mb-2">
 
-        <a href="/order/panel" class="btn btn-dark col text-decoration-none text-white">All</a>
+        <a href="/order/panel" class="btn btn-dark col text-decoration-none text-white fw-bold">All</a>
 
         <a href="/order/panel?statusId=${statusList[0].id}"
-           class=" btn btn-success col text-decoration-none link-body-emphasis">${statusList[0].name}</a>
+           class=" btn btn-success col text-decoration-none link-body-emphasis fw-bold">${statusList[0].name}</a>
 
         <a href="/order/panel?statusId=${statusList[1].id}"
-           class="btn btn-warning col text-decoration-none link-body-emphasis">${statusList[1].name}</a>
+           class="btn btn-warning col text-decoration-none link-body-emphasis fw-bold">${statusList[1].name}</a>
 
         <a href="/order/panel?statusId=${statusList[2].id}"
-           class="btn btn-info col text-decoration-none link-body-emphasis">${statusList[2].name}</a>
+           class="btn btn-info col text-decoration-none link-body-emphasis fw-bold">${statusList[2].name}</a>
 
         <a href="/order/panel?statusId=${statusList[3].id}"
-           class="btn btn-danger col text-decoration-none link-body-emphasis">${statusList[3].name}</a>
+           class="btn btn-danger col text-decoration-none link-body-emphasis fw-bold">${statusList[3].name}</a>
 
 
     </div>
@@ -43,6 +43,7 @@
             <th scope="col">status</th>
             <th scope="col">sum</th>
             <th scope="col">action</th>
+            <th scope="col">change Status</th>
         </tr>
         </thead>
         <tbody>
@@ -52,16 +53,22 @@
                     <c:when test="${orderToedit !=null and orderToedit.id==order.id}">
                         <form:form method="post" modelAttribute="orderToedit">
                             <td>${order.id}</td>
-                            <td><form:input path="orderTime"/></td>
-                            <td><form:select path="place.id" items="${placeList}" itemValue="id"
-                                             itemLabel="color"/></td>
-                            <td><form:select path="status.id" items="${statusList}" itemValue="id"
-                                             itemLabel="name"/></td>
-                            <td><form:input path="sum"/></td>
+                            <td><form:input path="orderTime" class="order-input"/></td>
+                            <td><form:select path="place.id" items="${placeList}" itemValue="id" itemLabel="color" class="order-select"/></td>
+                            <td><form:select path="status.id" items="${statusList}" itemValue="id" itemLabel="name" class="order-select"/></td>
+                            <td><form:input path="sum" class="order-input"/></td>
                             <form:hidden path="id"/>
                             <form:hidden path="itemList"/>;
-                            <td><form:button class="btn btn-danger" name="edit">save changes</form:button>
-                                <a href="/order/panel" class="btn btn-info link dark text-decoration-none text-white">back</a>
+                            <td><form:button class="btn btn-danger btn-sm" name="edit">save</form:button>
+                                <a href="/order/panel"
+                                   class="btn btn-info btn-sm text-decoration-none text-white">back</a>
+                            </td>
+                            <td><a href="/order/changeStatus?statusId=${statusList[1].id}&orderId=${order.id}"
+                                   class="btn btn-warning btn-sm text-decoration-none text-dark">${statusList[1].name}</a>
+                                <a href="/order/changeStatus?statusId=${statusList[2].id}&orderId=${order.id}"
+                                   class="btn btn-info btn-sm text-decoration-none text-dark">${statusList[2].name}</a>
+                                <a href="/order/changeStatus?statusId=${statusList[3].id}&orderId=${order.id}"
+                                   class="btn btn-danger btn-sm text-decoration-none text-dark">${statusList[3].name}</a>
                             </td>
                         </form:form>
                     </c:when>
@@ -73,12 +80,21 @@
                         <td class="establishedStatus">${order.status.name}</td>
                         <td>${order.sum}</td>
                         <td>
-                            <a href="/items/order?orderId=${order.id}"
-                               class="btn btn-warning text-decoration-none link-body-emphasis">details</a>
+                            <a href="/order/items?orderId=${order.id}"
+                               class="btn btn-secondary btn-sm text-decoration-none">details</a>
 
                             <a href="/order/panel?orderToEditId=${order.id}"
-                               class="btn btn-success text-decoration-none link-light">edit</a>
+                               class="btn btn-success btn-sm text-decoration-none link-light">edit</a>
+                        <td>
+
+                            <a href="/order/changeStatus?statusId=${statusList[1].id}&orderId=${order.id}"
+                               class="btn btn-warning btn-sm text-decoration-none text-dark">${statusList[1].name}</a>
+                            <a href="/order/changeStatus?statusId=${statusList[2].id}&orderId=${order.id}"
+                               class="btn btn-info btn-sm text-decoration-none text-dark">${statusList[2].name}</a>
+                            <a href="/order/changeStatus?statusId=${statusList[3].id}&orderId=${order.id}"
+                               class="btn btn-danger btn-sm text-decoration-none text-dark">${statusList[3].name}</a>
                         </td>
+
                     </c:otherwise>
 
                 </c:choose>
@@ -91,6 +107,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-<script src="/test.js" ></script>
+<script src="/test.js"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.app.springpizza.entity.Item;
 import pl.app.springpizza.entity.Order;
+import pl.app.springpizza.entity.Status;
 import pl.app.springpizza.repository.OrderRepository;
 import pl.app.springpizza.repository.PlaceRepository;
 import pl.app.springpizza.repository.StatusRepository;
@@ -53,11 +54,22 @@ public class OrderPanelController {
 
     }
 
-    @GetMapping("/items/order")
+    @GetMapping("/order/items")
     public String findItemsByOrderId(@RequestParam Long orderId, Model model) {
         List<Item> items = orderRepository.findItemsByOrderId(orderId);
         model.addAttribute("items", items);
         return "items-in-order";
+    }
+
+    @GetMapping("/order/changeStatus")
+    public String changeStatus(@RequestParam Long statusId, @RequestParam Long orderId){
+        Status statusAfterChange = statusRepository.getStatusById(statusId);
+        Order order = orderRepository.getOrderById(orderId);
+        order.setStatus(statusAfterChange);
+        System.out.println(statusAfterChange);
+        System.out.println(order);
+        orderRepository.save(order);
+        return "redirect:/order/panel";
     }
 
 }

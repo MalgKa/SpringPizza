@@ -94,7 +94,7 @@ public class OrderController {
         order.setStatus(statusRepository.getStatusById(Long.parseLong("1")));
         orderRepository.save(order);
         cart.clear();
-        model.addAttribute("message", new Message("Dziękujemy", "Zamówienie przekazane do realizacji"));
+        model.addAttribute("message", new Message("Thank you", "Your order has been processed"));
         return "message";
     }
 }

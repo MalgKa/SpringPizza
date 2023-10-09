@@ -1,0 +1,47 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.message {
+    min-height: 100vh;
+    display: flex;
+    background-size: cover;
+    background-image: url("img/cart.jpg")
+}
+
+.message-container{
+    min-height: 100vh;
+    min-width: 100vw;
+}
+.title {
+    font-size: 15vh;
+    background-image: url("img/chalkboard.jpg");
+    text-transform: uppercase;
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+}
+
+.title-h2 {
+    font-size: 5vh;
+    background-image: url("img/chalkboard.jpg");
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+}
+
+/*.message-box{*/
+/*    background-image: linear-gradient(to right, green,yellow);*/
+/*    opacity: 75%;*/
+/*    border-radius: 5px;*/
+/*}*/
+
+

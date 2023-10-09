@@ -57,4 +57,12 @@ li{
     font-size: 2rem;
 }
 
+/*inputs after edit*/
 
+.order-input{
+    width: 140px;
+    background-color: #8fff83
+}
+.order-select{
+    background-color: #8fff83
+}
