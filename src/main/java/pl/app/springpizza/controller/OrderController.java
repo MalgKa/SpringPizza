@@ -36,7 +36,7 @@ public class OrderController {
     }
 
     @GetMapping("/addToCart")
-    public String addItemToCart(@RequestParam Long itemId, Model model) {
+    public String addItemToCart(@RequestParam Long itemId) {
         System.out.println(itemId);
         Optional<Item> item = itemRepository.findById(itemId);
         item.ifPresent(cart::add);

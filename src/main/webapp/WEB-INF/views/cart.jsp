@@ -23,8 +23,10 @@
             </tr>
         </c:forEach>
     </table>
+    <div class="control-buttons">
     <a href="/removeAllFromCart" class="btn btn-danger cart-link">remove all dishes from the order<i class="fa-solid fa-trash"></i></a>
     <a href="/home" class="btn btn-success">back to menu<i class="fa-solid fa-arrow-rotate-left fa-spin fa-spin-reverse"></i></a>
+    </div>
 </div>
 <div class="confirmation">
     <form action="/order/agreed" method="post">

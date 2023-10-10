@@ -41,3 +41,7 @@ i {
 .confirmation {
     margin-top: 5rem;
 }
+.control-buttons{
+    display: flex;
+    justify-content: flex-end;
+}
