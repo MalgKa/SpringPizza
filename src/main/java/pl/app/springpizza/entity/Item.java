@@ -25,6 +25,9 @@ public class Item {
     @Column(name="img_url")
     private String imgUrl;
 
+
+    private String availability;
+
     public Long getId() {
         return id;
     }
@@ -81,6 +84,15 @@ public class Item {
         this.imgUrl = imgUrl;
     }
 
+
+    public String getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
+
     @Override
     public String toString() {
         return "Item{" +
@@ -91,6 +103,7 @@ public class Item {
                 ", type='" + type + '\'' +
                 ", price=" + price +
                 ", imgUrl='" + imgUrl + '\'' +
+                ", availability='" + availability + '\'' +
                 '}';
     }
 }

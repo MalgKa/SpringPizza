@@ -21,16 +21,16 @@
         <a href="/order/panel" class="btn btn-dark col text-decoration-none text-white fw-bold">All</a>
 
         <a href="/order/panel?statusId=${statusList[0].id}"
-           class=" btn btn-success col text-decoration-none link-body-emphasis fw-bold">${statusList[0].name}</a>
+           class=" btn btn-success col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="${statusList[0].description}">${statusList[0].name}</a>
 
         <a href="/order/panel?statusId=${statusList[1].id}"
-           class="btn btn-warning col text-decoration-none link-body-emphasis fw-bold">${statusList[1].name}</a>
+           class="btn btn-warning col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="${statusList[1].description}">${statusList[1].name}</a>
 
         <a href="/order/panel?statusId=${statusList[2].id}"
-           class="btn btn-info col text-decoration-none link-body-emphasis fw-bold">${statusList[2].name}</a>
+           class="btn btn-info col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="${statusList[2].description}">${statusList[2].name}</a>
 
         <a href="/order/panel?statusId=${statusList[3].id}"
-           class="btn btn-danger col text-decoration-none link-body-emphasis fw-bold">${statusList[3].name}</a>
+           class="btn btn-danger col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="${statusList[3].description}">${statusList[3].name}</a>
 
 
     </div>
@@ -54,9 +54,9 @@
                         <form:form method="post" modelAttribute="orderToedit">
                             <td>${order.id}</td>
                             <td><form:input path="orderTime" class="order-input"/></td>
-                            <td><form:select path="place.id" items="${placeList}" itemValue="id" itemLabel="color" class="order-select"/></td>
-                            <td><form:select path="status.id" items="${statusList}" itemValue="id" itemLabel="name" class="order-select"/></td>
-                            <td><form:input path="sum" class="order-input"/></td>
+                            <td><form:select path="place.id" items="${placeList}" itemValue="id" itemLabel="color" class="order-select place"/></td>
+                            <td><form:select path="status.id" items="${statusList}" itemValue="id" itemLabel="name" class="order-select status"/></td>
+                            <td><form:input path="sum" class="order-input sum"/></td>
                             <form:hidden path="id"/>
                             <form:hidden path="itemList"/>;
                             <td><form:button class="btn btn-danger btn-sm" name="edit">save</form:button>
@@ -69,6 +69,8 @@
                                    class="btn btn-info btn-sm text-decoration-none text-dark">${statusList[2].name}</a>
                                 <a href="/order/changeStatus?statusId=${statusList[3].id}&orderId=${order.id}"
                                    class="btn btn-danger btn-sm text-decoration-none text-dark">${statusList[3].name}</a>
+                                <a href="/order/discount?orderId=${order.id}&sumOfOrder=${order.sum}"
+                                   class="btn btn-second btn-sm text-decoration-none text-white">discount 5%</a>
                             </td>
                         </form:form>
                     </c:when>
@@ -93,6 +95,8 @@
                                class="btn btn-info btn-sm text-decoration-none text-dark">${statusList[2].name}</a>
                             <a href="/order/changeStatus?statusId=${statusList[3].id}&orderId=${order.id}"
                                class="btn btn-danger btn-sm text-decoration-none text-dark">${statusList[3].name}</a>
+                        <a href="/order/discount?orderId=${order.id}&sumOfOrder=${order.sum}"
+                           class="btn btn-second btn-sm text-decoration-none text-white">discount 5%</a>
                         </td>
 
                     </c:otherwise>

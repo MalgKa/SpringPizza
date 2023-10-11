@@ -46,6 +46,16 @@ h2 {
     border: 1px solid rgb(197, 197, 197);
 }
 
+
+.form-box-radio{
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+#available{
+    margin-right: 10px;
+}
+
 .form-box.error input {
     border: 1px solid rgb(0, 137, 250);
     background-color: rgb(0, 137, 250, 0.1);;

@@ -59,10 +59,24 @@ li{
 
 /*inputs after edit*/
 
-.order-input{
-    width: 140px;
-    background-color: #8fff83
+.order-input, .order-select{
+    width: 125px;
+    background-color: #8fff83;
+    font-size: 14px;
 }
-.order-select{
-    background-color: #8fff83
+
+.order-input.sum{
+    width: 60px;
+}
+.order-select.place{
+    width:70px
+}
+.order-select.status{
+    width:95px
+}
+
+/*tooltip*/
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-danger);
+    transition: opacity 0.5s;
 }

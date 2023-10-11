@@ -71,5 +71,16 @@ public class OrderPanelController {
         orderRepository.save(order);
         return "redirect:/order/panel";
     }
+    @GetMapping("/order/discount")
+    public String discount(@RequestParam Long orderId, @RequestParam double sumOfOrder){
+        Order order = orderRepository.getOrderById(orderId);
+        double sum = (sumOfOrder-(sumOfOrder*0.1));
+        double roundedSum = Math.round(sum * 100.0) / 100.0;
+        order.setSum(roundedSum);
+        System.out.println(roundedSum);
+        System.out.println(order);
+        orderRepository.save(order);
+        return "redirect:/order/panel";
+    }
 
 }

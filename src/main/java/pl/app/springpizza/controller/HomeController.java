@@ -22,10 +22,10 @@ public class HomeController {
     @GetMapping("/home")
     public String home(Model model) {
 //        List<Item> items = itemRepository.findAll();
-        List<Item> pizzaList = itemRepository.findAllByType("pizza");
-        List<Item> drinksList = itemRepository.findAllByType("drink");
-        List<Item> dessertList = itemRepository.findAllByType("dessert");
-        List<Item> pastaList = itemRepository.findAllByType("pasta");
+        List<Item> pizzaList = itemRepository.findAllAvailableByType("pizza");
+        List<Item> drinksList = itemRepository.findAllAvailableByType("drink");
+        List<Item> dessertList = itemRepository.findAllAvailableByType("dessert");
+        List<Item> pastaList = itemRepository.findAllAvailableByType("pasta");
         model.addAttribute("pizzaList", pizzaList);
         model.addAttribute("drinksList", drinksList);
         model.addAttribute("dessertList", dessertList);
