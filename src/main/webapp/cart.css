@@ -45,3 +45,78 @@ i {
     display: flex;
     justify-content: flex-end;
 }
+
+/*radio places*/
+
+
+.my-card{
+    background-image: url("img/takePlace.jpg");
+    display: grid;
+    margin-block:8px ;
+    width: 650px;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: repeat(12,1fr);
+    border-radius: 8px;
+
+}
+
+input[type=radio]{
+    width: 40%;
+    justify-self: start;
+}
+
+.place1{
+    grid-row:3;
+    grid-column: 5;
+    accent-color: red;
+}
+
+.place2{
+    grid-row:6;
+    grid-column: 3;
+    accent-color: green;
+}
+
+.place3{
+    grid-row:5;
+    grid-column: 8;
+    accent-color: yellow;
+}
+
+.place4{
+    grid-row:7;
+    grid-column: 12;
+    accent-color: orange;
+}
+.place5{
+    grid-row:9;
+    grid-column:6;
+    accent-color: lightskyblue;
+}
+
+.place6{
+    grid-row:10;
+    grid-column:1;
+    accent-color: pink;
+}
+
+.place7{
+    grid-row:9;
+    grid-column:2;
+    accent-color: darkblue;
+}
+
+.place8{
+    grid-row:8;
+    grid-column:3;
+    accent-color: salmon;
+}
+
+.place9{
+    grid-row:10;
+    grid-column:10;
+    accent-color: olivedrab;
+}

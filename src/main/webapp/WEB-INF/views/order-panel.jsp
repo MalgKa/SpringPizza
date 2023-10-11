@@ -70,7 +70,7 @@
                                 <a href="/order/changeStatus?statusId=${statusList[3].id}&orderId=${order.id}"
                                    class="btn btn-danger btn-sm text-decoration-none text-dark">${statusList[3].name}</a>
                                 <a href="/order/discount?orderId=${order.id}&sumOfOrder=${order.sum}"
-                                   class="btn btn-second btn-sm text-decoration-none text-white">discount 5%</a>
+                                   class="btn btn-secondary btn-sm text-decoration-none text-white">discount 10%</a>
                             </td>
                         </form:form>
                     </c:when>
@@ -96,7 +96,7 @@
                             <a href="/order/changeStatus?statusId=${statusList[3].id}&orderId=${order.id}"
                                class="btn btn-danger btn-sm text-decoration-none text-dark">${statusList[3].name}</a>
                         <a href="/order/discount?orderId=${order.id}&sumOfOrder=${order.sum}"
-                           class="btn btn-second btn-sm text-decoration-none text-white">discount 5%</a>
+                           class="btn btn-secondary btn-sm text-decoration-none text-white">discount 10%</a>
                         </td>
 
                     </c:otherwise>
