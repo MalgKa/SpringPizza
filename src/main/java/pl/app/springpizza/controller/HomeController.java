@@ -1,5 +1,7 @@
 package pl.app.springpizza.controller;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,15 +23,12 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model) {
-//        List<Item> items = itemRepository.findAll();
-        List<Item> pizzaList = itemRepository.findAllAvailableByType("pizza");
-        List<Item> drinksList = itemRepository.findAllAvailableByType("drink");
-        List<Item> dessertList = itemRepository.findAllAvailableByType("dessert");
-        List<Item> pastaList = itemRepository.findAllAvailableByType("pasta");
-        model.addAttribute("pizzaList", pizzaList);
-        model.addAttribute("drinksList", drinksList);
-        model.addAttribute("dessertList", dessertList);
-        model.addAttribute("pastaList", pastaList);
+        List<Item> items = itemRepository.findAll();
+        Multimap<String, Item> mapOfDishes = ArrayListMultimap.create();
+        items.stream()
+                .filter(i -> i.getAvailability().equals("Y"))
+                .forEach(i->mapOfDishes.put(i.getType(),i));
+        model.addAttribute("mapOfDishes", mapOfDishes);
         return "home";
     }
 

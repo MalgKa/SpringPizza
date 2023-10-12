@@ -6,6 +6,5 @@ import pl.app.springpizza.entity.Item;
 import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Item ,Long> {
-    @Query("SELECT i FROM Item i WHERE i.availability='Y' AND i.type=:type")
-    List<Item> findAllAvailableByType(String type);
+
 }
