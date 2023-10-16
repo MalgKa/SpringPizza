@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/125cf097bb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/cart.css" type="text/css">
+    <link rel="stylesheet" href="/css/cart.css" type="text/css">
 </head>
 <body class="cart">
 <div class="d-flex flex-column justify-content-center align-items-center cart-container">
@@ -32,11 +32,11 @@
         </div>
     </div>
     <div class="confirmation">
-        <form action="/order/agreed" method="post">
+        <form action="/cart/agreed" method="post">
             <input type="hidden" name="sum" value="${sum}">
             <h2 class="d-inline">choose your table below:</h2>
             <div class="my-card">
-                <input class=place1 type="radio" name="placeId" value="${placeList[0].id}">
+                <input class=place1 type="radio" name="placeId" value="${placeList[0].id}" checked="checked">
                 <input class=place2 type="radio" name="placeId" value="${placeList[1].id}">
                 <input class=place3 type="radio" name="placeId" value="${placeList[2].id}">
                 <input class=place4 type="radio" name="placeId" value="${placeList[3].id}">
@@ -46,7 +46,7 @@
                 <input class=place8 type="radio" name="placeId" value="${placeList[7].id}">
                 <input class=place9 type="radio" name="placeId" value="${placeList[8].id}">
             </div>
-            <button type="submit" class="btn btn-info cart-link">confirm<i class="fa-solid fa-check"></i></button>
+            <button type="submit" class="btn btn-info cart-link confirm">confirm<i class="fa-solid fa-check"></i></button>
         </form>
     </div>
 </div>

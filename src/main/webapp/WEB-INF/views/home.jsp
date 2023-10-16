@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/customerPanel.css" type="text/css">
+    <link rel="stylesheet" href="/css/customerPanel.css" type="text/css">
 </head>
 <body class="home">
 <div class="my-grid-container">

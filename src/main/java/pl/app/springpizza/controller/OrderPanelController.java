@@ -35,10 +35,10 @@ public class OrderPanelController {
             model.addAttribute("orderToedit", orderToEdit);
         }
 
-        if(statusId != null){
+        if (statusId != null) {
             model.addAttribute("orderList", orderRepository.findAllByStatusId(statusId));
             System.out.println(orderRepository.findAllByStatusId(statusId));
-        }else{
+        } else {
             model.addAttribute("orderList", orderRepository.findAll());
         }
         model.addAttribute("placeList", placeRepository.findAll());
@@ -46,9 +46,8 @@ public class OrderPanelController {
         return "order-panel";
     }
 
-
-    @PostMapping(value="/order/panel", params = "edit")
-    public String editOrder(Order order){
+    @PostMapping(value = "/order/panel", params = "edit")
+    public String editOrder(Order order) {
         orderRepository.save(order);
         return "redirect:/order/panel";
 
@@ -62,7 +61,7 @@ public class OrderPanelController {
     }
 
     @GetMapping("/order/changeStatus")
-    public String changeStatus(@RequestParam Long statusId, @RequestParam Long orderId){
+    public String changeStatus(@RequestParam Long statusId, @RequestParam Long orderId) {
         Status statusAfterChange = statusRepository.getStatusById(statusId);
         Order order = orderRepository.getOrderById(orderId);
         order.setStatus(statusAfterChange);
@@ -71,10 +70,11 @@ public class OrderPanelController {
         orderRepository.save(order);
         return "redirect:/order/panel";
     }
+
     @GetMapping("/order/discount")
-    public String discount(@RequestParam Long orderId, @RequestParam double sumOfOrder){
+    public String discount(@RequestParam Long orderId, @RequestParam double sumOfOrder) {
         Order order = orderRepository.getOrderById(orderId);
-        double sum = (sumOfOrder-(sumOfOrder*0.1));
+        double sum = (sumOfOrder - (sumOfOrder * 0.1));
         double roundedSum = Math.round(sum * 100.0) / 100.0;
         order.setSum(roundedSum);
         System.out.println(roundedSum);

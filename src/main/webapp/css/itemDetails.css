@@ -16,7 +16,7 @@
     min-height: 100vh;
     display: flex;
     background-size: cover;
-    background-image: url("img/chalkboard.jpg");
+    background-image: url("../img/chalkboard.jpg");
 
 }
 

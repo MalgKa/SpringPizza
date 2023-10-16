@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Caveat:wght@400;500;600;700&display=swap"
           rel="stylesheet">
     <script src="https://kit.fontawesome.com/125cf097bb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="/itemDetails.css">
+    <link rel="stylesheet" type="text/css" href="/css/itemDetails.css">
 </head>
 <body class="details-container">
 <div class="container justify-content-center d-flex">

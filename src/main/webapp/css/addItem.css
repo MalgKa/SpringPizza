@@ -10,7 +10,7 @@
     align-items: center;
     min-height: 100vh;
     background-size: cover;
-    background-image: url("img/woodBackground.jpg")
+    background-image: url("../img/woodBackground.jpg")
 }
 
 .wrapper {

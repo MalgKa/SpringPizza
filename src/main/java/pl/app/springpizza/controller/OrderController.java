@@ -65,7 +65,7 @@ public class OrderController {
         List<Item> sortedItemList = new ArrayList<>(cart.getOrder().getItemList());
         sortedItemList.sort(Comparator.comparingInt(item -> item.getId().intValue()));
         model.addAttribute("placeList", placeList);
-        model.addAttribute("sortedItemList",sortedItemList);
+        model.addAttribute("sortedItemList", sortedItemList);
         model.addAttribute("cart", cart.getOrder());
         model.addAttribute("sum", Math.floor(sum * 100) / 100);
         return "cart";
@@ -81,12 +81,12 @@ public class OrderController {
     }
 
     @GetMapping("/removeAllFromCart")
-    public String removeAllItemsFromCart(){
+    public String removeAllItemsFromCart() {
         cart.clear();
         return "redirect:/cart";
     }
 
-    @PostMapping("/order/agreed")
+    @PostMapping("/cart/agreed")
     public String proceedOrder(@RequestParam Long placeId, @RequestParam Double sum, Model model) {
         Order order = cart.getOrder();
         order.setPlace(placeRepository.getById(placeId));
