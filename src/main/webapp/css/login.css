@@ -1,0 +1,58 @@
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    background-size: cover;
+    background-image: url("../img/chalkboard.jpg");
+
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.img{
+    background-image: url("../img/login.jpg");
+    background-size: cover;
+    background-position: center;
+    width:400px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    align-content: center;
+}
+
+.login-header,
+.pizza-icon{
+    text-align: center;
+    color: white;
+}
+
+.pizza-icon{
+    display: block;
+
+}
+.form-item{
+    margin:4px 0
+}
+
+button{
+    background-color: lightgreen;
+    width: fit-content;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 8px;
+    align-self: center;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.2s;
+    &:hover{
+        color: white;
+        background-color: darkgreen;
+    }
+}
