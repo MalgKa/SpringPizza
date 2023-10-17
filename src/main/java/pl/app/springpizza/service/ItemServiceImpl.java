@@ -33,7 +33,13 @@ public class ItemServiceImpl implements ItemService {
 
         List<Order> relatedOrder = orderRepository.findAllByItemListContains(item);
         relatedOrder.forEach(
-                order -> order.getItemList().removeIf(i -> i.getId().equals(item.getId())));
+                order -> {
+                    order.getItemList().removeIf(i -> i.getId().equals(item.getId()));
+                    if(order.getItemList().isEmpty()){
+                        orderRepository.delete(order);
+                    }
+                });
+
         itemRepository.delete(item);
         return true;
     }
