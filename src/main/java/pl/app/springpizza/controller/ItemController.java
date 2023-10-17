@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.app.springpizza.entity.Item;
 import pl.app.springpizza.repository.ItemRepository;
+import pl.app.springpizza.service.ItemService;
 
 
 @Controller
@@ -15,9 +16,11 @@ import pl.app.springpizza.repository.ItemRepository;
 public class ItemController {
 
     private final ItemRepository itemRepository;
+    private final ItemService itemService;
 
-    public ItemController(ItemRepository itemRepository) {
+    public ItemController(ItemRepository itemRepository, ItemService itemService) {
         this.itemRepository = itemRepository;
+        this.itemService = itemService;
     }
 
     @GetMapping("/addItem")
@@ -47,7 +50,7 @@ public class ItemController {
     @PostMapping("/delete")
     public String deleteItem(@RequestParam Long itemId) {
         Item item = itemRepository.getItemById(itemId);
-        itemRepository.delete(item);
+        itemService.removeItem(item);
         return "redirect:/admin/itemList";
     }
 
