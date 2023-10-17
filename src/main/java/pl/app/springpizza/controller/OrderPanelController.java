@@ -65,8 +65,6 @@ public class OrderPanelController {
         Status statusAfterChange = statusRepository.getStatusById(statusId);
         Order order = orderRepository.getOrderById(orderId);
         order.setStatus(statusAfterChange);
-        System.out.println(statusAfterChange);
-        System.out.println(order);
         orderRepository.save(order);
         return "redirect:/order/panel";
     }
@@ -77,8 +75,6 @@ public class OrderPanelController {
         double sum = (sumOfOrder - (sumOfOrder * 0.1));
         double roundedSum = Math.round(sum * 100.0) / 100.0;
         order.setSum(roundedSum);
-        System.out.println(roundedSum);
-        System.out.println(order);
         orderRepository.save(order);
         return "redirect:/order/panel";
     }
