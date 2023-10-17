@@ -14,6 +14,7 @@ import pl.app.springpizza.repository.PlaceRepository;
 import pl.app.springpizza.repository.StatusRepository;
 import pl.app.springpizza.sessionComponent.Cart;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @Controller
@@ -39,34 +40,23 @@ public class OrderController {
     public String addItemToCart(@RequestParam Long itemId) {
         Optional<Item> item = itemRepository.findById(itemId);
         item.ifPresent(cart::add);
-//        Message message;
-//        if (item.isPresent()) {
-//            message = new Message("Added", item.get().getName() + " added to the order");
-//        } else {
-//            message = new Message("not added", " incorrect order ID provided: " + itemId);
-//        }
-//        model.addAttribute("message", message);
-//        System.out.println(cart.getOrder().toString());
-//        return "message";
-
         return "redirect:/home";
-
     }
 
     @GetMapping("/cart")
     public String getCurrentOrder(Model model) {
         List<Place> placeList = placeRepository.findAll();
-        double sum = cart
+        BigDecimal sum = cart
                 .getOrder()
                 .getItemList().stream()
-                .mapToDouble(Item::getPrice)
-                .sum();
+                .map(item -> BigDecimal.valueOf(item.getPrice()))
+                .reduce(BigDecimal.ZERO, (accumulator, price) -> accumulator.add(price));
         List<Item> sortedItemList = new ArrayList<>(cart.getOrder().getItemList());
         sortedItemList.sort(Comparator.comparingInt(item -> item.getId().intValue()));
         model.addAttribute("placeList", placeList);
         model.addAttribute("sortedItemList", sortedItemList);
         model.addAttribute("cart", cart.getOrder());
-        model.addAttribute("sum", Math.floor(sum * 100) / 100);
+        model.addAttribute("sum", sum);
         return "cart";
     }
 

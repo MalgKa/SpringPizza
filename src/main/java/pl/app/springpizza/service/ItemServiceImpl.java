@@ -7,6 +7,8 @@ import pl.app.springpizza.repository.ItemRepository;
 import pl.app.springpizza.repository.OrderRepository;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @Service
@@ -34,9 +36,18 @@ public class ItemServiceImpl implements ItemService {
         List<Order> relatedOrder = orderRepository.findAllByItemListContains(item);
         relatedOrder.forEach(
                 order -> {
+                    long itemCount = order.getItemList().stream()
+                            .filter(orderItem -> orderItem.getId().equals(item.getId()))
+                            .count();
                     order.getItemList().removeIf(i -> i.getId().equals(item.getId()));
-                    if(order.getItemList().isEmpty()){
+                    if (order.getItemList().isEmpty()) {
                         orderRepository.delete(order);
+                    } else {
+                        double totalPriceReduction = item.getPrice() * itemCount;
+                        double totalPrice = order.getSum();
+                        double newTotalPrice = BigDecimal.valueOf(totalPrice - totalPriceReduction).setScale(2, RoundingMode.HALF_UP).doubleValue();
+                        order.setSum(newTotalPrice);
+                        orderRepository.save(order);
                     }
                 });
 
