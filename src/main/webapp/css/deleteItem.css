@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.item-to-delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-image: url("../img/bgc2.jpg");
+}
+
+
+.delete-info {
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    padding: 20px;
+}
+
+p {
+    font-size: 30px;
+    margin: 20px 0;
+}
+
+span {
+    font-weight: bold;
+}
+
+.btn {
+    margin-top: 20px;
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 20px;
+
+    &:hover {
+        background-color: #c14e59;
+        color:black;
+    }
+}
+
+.btn-link {
+    background-color: #176734;
+    text-decoration: none;
+    transition: 0.3s;
+
+    &:hover {
+        color: black;
+        background-color: #51976b
+    }
+}

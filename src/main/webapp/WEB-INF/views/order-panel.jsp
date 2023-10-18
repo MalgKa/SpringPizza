@@ -19,16 +19,20 @@
         <a href="/order/panel" class="btn btn-dark col text-decoration-none text-white fw-bold">All</a>
 
         <a href="/order/panel?statusId=${statusList[0].id}"
-           class=" btn btn-success col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="${statusList[0].description}">${statusList[0].name}</a>
+           class=" btn btn-success col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top"
+           data-bs-custom-class="custom-tooltip" title="${statusList[0].description}">${statusList[0].name}</a>
 
         <a href="/order/panel?statusId=${statusList[1].id}"
-           class="btn btn-warning col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="${statusList[1].description}">${statusList[1].name}</a>
+           class="btn btn-warning col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top"
+           data-bs-custom-class="custom-tooltip" title="${statusList[1].description}">${statusList[1].name}</a>
 
         <a href="/order/panel?statusId=${statusList[2].id}"
-           class="btn btn-info col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="${statusList[2].description}">${statusList[2].name}</a>
+           class="btn btn-info col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top"
+           data-bs-custom-class="custom-tooltip" title="${statusList[2].description}">${statusList[2].name}</a>
 
         <a href="/order/panel?statusId=${statusList[3].id}"
-           class="btn btn-danger col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top" data-bs-custom-class="custom-tooltip" title="${statusList[3].description}">${statusList[3].name}</a>
+           class="btn btn-danger col text-decoration-none link-body-emphasis fw-bold tt" data-bs-placement="top"
+           data-bs-custom-class="custom-tooltip" title="${statusList[3].description}">${statusList[3].name}</a>
 
 
     </div>
@@ -52,8 +56,10 @@
                         <form:form method="post" modelAttribute="orderToedit">
                             <td>${order.id}</td>
                             <td><form:input path="orderTime" class="order-input"/></td>
-                            <td><form:select path="place.id" items="${placeList}" itemValue="id" itemLabel="color" class="order-select place"/></td>
-                            <td><form:select path="status.id" items="${statusList}" itemValue="id" itemLabel="name" class="order-select status"/></td>
+                            <td><form:select path="place.id" items="${placeList}" itemValue="id" itemLabel="color"
+                                             class="order-select place"/></td>
+                            <td><form:select path="status.id" items="${statusList}" itemValue="id" itemLabel="name"
+                                             class="order-select status"/></td>
                             <td><form:input path="sum" class="order-input sum"/></td>
                             <form:hidden path="id"/>
                             <form:hidden path="itemList"/>;
@@ -93,8 +99,8 @@
                                class="btn btn-info btn-sm text-decoration-none text-dark">${statusList[2].name}</a>
                             <a href="/order/changeStatus?statusId=${statusList[3].id}&orderId=${order.id}"
                                class="btn btn-danger btn-sm text-decoration-none text-dark">${statusList[3].name}</a>
-                        <a href="/order/discount?orderId=${order.id}&sumOfOrder=${order.sum}"
-                           class="btn btn-secondary btn-sm text-decoration-none text-white">discount 10%</a>
+                            <a href="/order/discount?orderId=${order.id}&sumOfOrder=${order.sum}"
+                               class="btn btn-secondary btn-sm text-decoration-none text-white">discount 10%</a>
                         </td>
 
                     </c:otherwise>
@@ -105,7 +111,10 @@
 
         </tbody>
     </table>
-    <a href="/admin/addItem" class="btn btn-info btn-sm text-decoration-none text-white">add item</a>
+    <div class="d-flex flex-row">
+        <a href="/admin/addItem" class="btn btn-info btn-sm text-decoration-none text-white">add item</a>
+        <a href="/admin/itemList" class="btn btn-light btn-sm text-decoration-none text-dark">items in the menu</a>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

@@ -52,7 +52,8 @@
         </div>
 
         <div class="control-buttons">
-            <a href="/order/panel" class="back">back</a>
+            <a href="/order/panel" class="back">order panel</a>
+            <a href="/admin/itemList" class="back">back</a>
             <button type="submit" class="save">save</button>
         </div>
         <div class="popup">

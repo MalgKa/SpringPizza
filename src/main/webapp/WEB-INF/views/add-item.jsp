@@ -52,6 +52,7 @@
         </div>
 
         <div class="control-buttons">
+            <a href="/admin/itemList" class="back">item list</a>
             <a href="/order/panel" class="back">back</a>
             <button type="submit" class="save">save</button>
         </div>
