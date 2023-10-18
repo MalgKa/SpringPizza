@@ -2,27 +2,29 @@ package pl.app.springpizza.entity;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="items")
+@Table(name = "items")
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotBlank(message = "enter name")
     private String name;
-
-    @Column(name="short_description")
+    @NotBlank(message = "enter short description")
+    @Column(name = "short_description")
     private String shortDescription;
-
+    @NotBlank(message = "enter description")
     @Column(length = 1024)
     private String description;
-
+    @NotBlank(message = "enter type")
     private String type;
-
+    @NotNull(message = "enter price")
     private Double price;
 
-    @Column(name="img_url")
+    @Column(name = "img_url")
     private String imgUrl;
 
 

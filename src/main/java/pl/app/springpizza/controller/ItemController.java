@@ -2,6 +2,7 @@ package pl.app.springpizza.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.app.springpizza.entity.Item;
 import pl.app.springpizza.repository.ItemRepository;
 import pl.app.springpizza.service.ItemService;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -30,7 +33,10 @@ public class ItemController {
     }
 
     @PostMapping("/addItem")
-    public String addItem(Item item) {
+    public String addItem(@Valid Item item, BindingResult result) {
+        if (result.hasErrors()) {
+            return "add-item";
+        }
         itemRepository.save(item);
         return "redirect:/admin/addItem";
     }
@@ -61,7 +67,10 @@ public class ItemController {
     }
 
     @PostMapping("/update")
-    public String updateItem(Item item) {
+    public String updateItem(@Valid Item item, BindingResult result) {
+        if (result.hasErrors()) {
+            return "update-item";
+        }
         itemRepository.save(item);
         return "redirect:/admin/itemList";
     }
