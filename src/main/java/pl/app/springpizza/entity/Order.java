@@ -1,6 +1,10 @@
 package pl.app.springpizza.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -8,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "orders")
 public class Order {
     @Id
@@ -21,7 +28,7 @@ public class Order {
     )
     private List<Item> itemList = new ArrayList<>();
 
-    @Column(name="order_time")
+    @Column(name = "order_time")
     private LocalDateTime orderTime;
 
     private Double sum;
@@ -34,7 +41,6 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "status_id")
     private Status status;
-
 
 
     @PrePersist
@@ -63,7 +69,7 @@ public class Order {
         return orderTime;
     }
 
-    public String getOrderTimeFormatted(){
+    public String getOrderTimeFormatted() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return formatter.format(getOrderTime());
     }

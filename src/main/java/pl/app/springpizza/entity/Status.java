@@ -1,9 +1,16 @@
 package pl.app.springpizza.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name="statuses")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "statuses")
 public class Status {
 
     @Id
