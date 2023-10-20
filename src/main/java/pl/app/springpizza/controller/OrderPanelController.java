@@ -57,6 +57,7 @@ public class OrderPanelController {
     public String findItemsByOrderId(@RequestParam Long orderId, Model model) {
         List<Item> items = orderRepository.findItemsByOrderId(orderId);
         model.addAttribute("items", items);
+        model.addAttribute("orderId", orderId);
         return "items-in-order";
     }
 

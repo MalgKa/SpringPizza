@@ -26,7 +26,7 @@
             <tr>
                 <th class="col-3">name</th>
                 <th class="col-5">short description</th>
-                <th class="col-1">price</th>
+                <th class="col-1">price (zł)</th>
                 <th class="col-3"></th>
             </tr>
             <c:forEach items="${mapOfDishes.get('pizza')}" var="item">
@@ -48,7 +48,7 @@
             <tr>
                 <th class="col-3">name</th>
                 <th class="col-5">short description</th>
-                <th class="col-1">price</th>
+                <th class="col-1">price (zł)</th>
                 <th class="col-3"></th>
             </tr>
             <c:forEach items="${mapOfDishes.get('pasta')}" var="item">
@@ -70,7 +70,7 @@
             <tr>
                 <th class="col-3">name</th>
                 <th class="col-5">short description</th>
-                <th class="col-1">price</th>
+                <th class="col-1">price (zł)</th>
                 <th class="col-3"></th>
             </tr>
             <c:forEach items="${mapOfDishes.get('dessert')}" var="item">
@@ -92,7 +92,7 @@
             <tr>
                 <th class="col-3">name</th>
                 <th class="col-5">short description</th>
-                <th class="col-1">price</th>
+                <th class="col-1">price (zł)</th>
                 <th class="col-3"></th>
             </tr>
             <c:forEach items="${mapOfDishes.get('drink')}" var="item">

@@ -4,19 +4,19 @@
 <html>
 <head>
   <title>Items view</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/orderPanel.css" type="text/css">
+  <link rel="stylesheet" href="/css/orderDetails.css" type="text/css">
 </head>
-<body class="order-panel">
-<div class="container container-center mt-auto w-50">
-  <h1>Items in order:</h1>
-  <ul>
+<body class="order-details">
+<div class="wrapper">
+  <div class="title">
+    <p>Items in order: ${orderId}</p>
+  </div>
+  <div class="items-card">
     <c:forEach var="item" items="${items}">
-      <li>${item.name} - ${item.price} ${item.shortDescription}</li>
+      <li>${item.name} - ${item.price} zł <span>(${item.shortDescription})</span></li>
     </c:forEach>
-  </ul>
+  </div>
 </div>
-
+<a href="/order/panel" class="link-btn">back</a>
 </body>
 </html>

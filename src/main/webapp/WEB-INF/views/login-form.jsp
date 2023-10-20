@@ -11,7 +11,7 @@
     <div class="img"></div>
     <form action="/login" method="post" class="login-form">
         <input name="username" placeholder="Username" class="form-item">
-        <input name="password" placeholder="Password" class="form-item">
+        <input type="password" name="password" placeholder="Password" class="form-item">
         <button type="submit" class="form-item">Log in</button>
     </form>
 </div>
