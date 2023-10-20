@@ -9,9 +9,14 @@ SpringPizza is a modern web application that combines the convenience and simpli
 The project is built on the Spring Framework technologies, providing both customers and restaurant staff with tools to
 streamline the ordering process and menu management.
 
-view for the Customers:
+view for Customers:
 
 https://github.com/MalgKa/SpringPizza/assets/102424519/282bff59-6398-4e0d-bcf7-487297d18af9
+
+
+view for staff:
+
+https://github.com/MalgKa/SpringPizza/assets/102424519/445dc002-0cc6-45ca-b118-565c085f090c
 
 
 ## Application Features
