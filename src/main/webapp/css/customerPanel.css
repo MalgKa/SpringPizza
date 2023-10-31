@@ -10,22 +10,24 @@
     flex-direction: column;
     align-items: center;
 }
-.home{
+
+.home {
     min-height: 100vh;
     display: flex;
     background-size: cover;
     background-image: url("../img/menu.jpg")
 }
 
-.my-grid-container{
+.my-grid-container {
     display: grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2, 1fr);
 }
 
-.my-gird{
+.my-gird {
     grid-column: 2;
 }
-.menu-text{
+
+.menu-text {
     font-family: 'Fredericka the Great', cursive;
     color: antiquewhite;
     font-size: 5rem;
@@ -38,15 +40,49 @@ h3 {
     font-weight: bold;
 }
 
-i{
+.btn {
+    opacity: 75%;
+}
+
+.btn-login {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    font-weight: bold;
+    background-color: #ffa280;
+    border: none;
+    transition: .3s;
+
+    &:hover {
+        background-color: #d97652;
+        color: white;
+    }
+}
+
+.btn-admin-panel {
+    position: fixed;
+    right: 110px;
+    top: 20px;
+    background-color: #67d167;
+    font-weight: bold;
+    border: none;
+    transition: .3s;
+
+    &:hover {
+        background-color: #003500;
+        color: white;
+    }
+}
+
+i {
     margin-left: 0.5rem;
 }
 
-.home-table{
+.home-table {
     opacity: 70%;
 }
 
-.home-table th,td{
+.home-table th, td {
     font-family: 'Caveat', cursive;
     font-size: 1.6rem;
 }
@@ -74,12 +110,12 @@ i{
     visibility: visible;
 }
 
-.my-toast--hidden{
+.my-toast--hidden {
     visibility: hidden;
     opacity: 0;
 
 }
 
-.btn-success{
+.btn-success {
     margin-top: 40px;
 }

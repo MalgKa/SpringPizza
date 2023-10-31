@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,6 +19,15 @@
 <div class="my-grid-container">
     <div class="container w-60 my-gird">
         <h1 class="menu-text">M E N U</h1>
+        <sec:authorize access="isAnonymous()">
+            <a class="btn btn-login" href="/login">login</a>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <a class="btn btn-login" href="/logout">logout</a>
+        </sec:authorize>
+        <sec:authorize access="hasRole('ADMIN')">
+            <a class="btn btn-admin-panel" href="/order/panel">admin panel</a>
+        </sec:authorize>
         <div class="my-toast my-toast--hidden">
             product added to the order
         </div>
@@ -36,7 +46,8 @@
                     <td>${item.price}</td>
                     <td>
                         <a href='<c:url value='/addToCart'><c:param name='itemId' value='${item.id}'/></c:url>'
-                           class="btn btn-primary" onclick='Toasty()'>add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
+                           class="btn btn-primary" onclick='Toasty()'>add to order<i
+                                class="fa-solid fa-pizza-slice fa-beat"></i></a>
                         <a href='<c:url value='/item/details'><c:param name='itemId' value='${item.id}'/></c:url>'
                            class="btn btn-warning">details<i class="fa-solid fa-circle-info fa-shake"></i></a>
                     </td>
@@ -58,7 +69,8 @@
                     <td>${item.price}</td>
                     <td>
                         <a href='<c:url value='/addToCart'><c:param name='itemId' value='${item.id}'/></c:url>'
-                           class="btn btn-primary" onclick='Toasty()'>add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
+                           class="btn btn-primary" onclick='Toasty()'>add to order<i
+                                class="fa-solid fa-pizza-slice fa-beat"></i></a>
                         <a href='<c:url value='/item/details'><c:param name='itemId' value='${item.id}'/></c:url>'
                            class="btn btn-warning">details<i class="fa-solid fa-circle-info fa-shake"></i></a>
                     </td>
@@ -80,7 +92,8 @@
                     <td>${item.price}</td>
                     <td>
                         <a href='<c:url value='/addToCart'><c:param name='itemId' value='${item.id}'/></c:url>'
-                           class="btn btn-primary" onclick='Toasty()'>add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
+                           class="btn btn-primary" onclick='Toasty()'>add to order<i
+                                class="fa-solid fa-pizza-slice fa-beat"></i></a>
                         <a href='<c:url value='/item/details'><c:param name='itemId' value='${item.id}'/></c:url>'
                            class="btn btn-warning">details<i class="fa-solid fa-circle-info fa-shake"></i></a>
                     </td>
@@ -102,14 +115,16 @@
                     <td>${item.price}</td>
                     <td>
                         <a href='<c:url value='/addToCart'><c:param name='itemId' value='${item.id}'/></c:url>'
-                           class="btn btn-primary" onclick='Toasty()'>add to order<i class="fa-solid fa-pizza-slice fa-beat"></i></a>
+                           class="btn btn-primary" onclick='Toasty()'>add to order<i
+                                class="fa-solid fa-pizza-slice fa-beat"></i></a>
                         <a href='<c:url value='/item/details'><c:param name='itemId' value='${item.id}'/></c:url>'
                            class="btn btn-warning">details<i class="fa-solid fa-circle-info fa-shake"></i></a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
-        <button class="btn btn-success"><a href="/cart" class="text-white text-decoration-none">order summary<i class="fa-solid fa-basket-shopping fa-bounce"></i></a></button>
+        <button class="btn btn-success"><a href="/cart" class="text-white text-decoration-none">order summary<i
+                class="fa-solid fa-basket-shopping fa-bounce"></i></a></button>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
