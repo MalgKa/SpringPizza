@@ -23,7 +23,7 @@ public class SecurityConfig {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/home")
                 .and()
                 .build();
     }

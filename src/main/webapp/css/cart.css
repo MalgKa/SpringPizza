@@ -9,7 +9,13 @@
     min-height: 100vh;
     display: flex;
     background-size: cover;
-    background-image: url("../img/cart.jpg")
+    background-image: url("../img/cart.jpg");
+}
+
+.greeting-msg {
+    font-size: 4rem;
+    color: #2c253ba8;
+    margin-bottom: 5.5rem;
 }
 
 .btn {

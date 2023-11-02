@@ -2,6 +2,8 @@ package pl.app.springpizza.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -26,6 +28,11 @@ public class User {
     private String role;
     @Column(nullable = false)
     private Boolean active = false;
+    @OneToMany
+    @JoinTable(name = "user_order",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"))
+    private Set<Order> userOrders = new LinkedHashSet<>();
 
     public Long getId() {
         return id;
@@ -81,6 +88,15 @@ public class User {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+
+    public Set<Order> getUserOrders() {
+        return userOrders;
+    }
+
+    public void setUserOrders(Set<Order> userOrders) {
+        this.userOrders = userOrders;
     }
 
     @Override

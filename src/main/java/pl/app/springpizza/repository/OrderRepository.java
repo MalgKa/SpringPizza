@@ -7,7 +7,7 @@ import pl.app.springpizza.entity.Order;
 
 import java.util.List;
 
-public interface OrderRepository extends JpaRepository<Order,Long> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("SELECT o.itemList FROM Order o WHERE o.id = :orderId")
     List<Item> findItemsByOrderId(Long orderId);
 

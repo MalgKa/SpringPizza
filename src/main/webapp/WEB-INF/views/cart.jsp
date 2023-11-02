@@ -11,6 +11,7 @@
 </head>
 <body class="cart">
 <div class="d-flex flex-column justify-content-center align-items-center cart-container">
+    <p class="greeting-msg">Hello ${loggedUser.username} <i class="fa-regular fa-face-grin-wink"></i></p>
     <h1 class="mb-5">summary of your order: ${sum} zł</h1>
     <div class="w-50">
         <table class="table table-hover">
@@ -46,7 +47,8 @@
                 <input class=place8 type="radio" name="placeId" value="${placeList[7].id}">
                 <input class=place9 type="radio" name="placeId" value="${placeList[8].id}">
             </div>
-            <button type="submit" class="btn btn-info cart-link confirm">confirm<i class="fa-solid fa-check"></i></button>
+            <button type="submit" class="btn btn-info cart-link confirm">confirm<i class="fa-solid fa-check"></i>
+            </button>
         </form>
     </div>
 </div>

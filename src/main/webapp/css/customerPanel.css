@@ -74,6 +74,29 @@ h3 {
     }
 }
 
+.cart-numberItems {
+    position: fixed;
+    display: flex;
+    background-color: #a3dbc4;
+    border: none;
+    top: 70px;
+    right: 20px;
+
+    &:hover {
+        background-color: #468169;
+        color: #efdcdc;
+    }
+
+    &:hover > a {
+        color: white;
+    }
+}
+
+.cart-numberItems a {
+    color: black;
+}
+
+
 i {
     margin-left: 0.5rem;
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.app.springpizza.entity.Item;
 import pl.app.springpizza.repository.ItemRepository;
+import pl.app.springpizza.sessionComponent.Cart;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,9 +16,11 @@ import java.util.Optional;
 @Controller
 public class HomeController {
     private final ItemRepository itemRepository;
+    private final Cart cart;
 
-    public HomeController(ItemRepository itemRepository) {
+    public HomeController(ItemRepository itemRepository, Cart cart) {
         this.itemRepository = itemRepository;
+        this.cart = cart;
     }
 
 
@@ -27,7 +30,8 @@ public class HomeController {
         Multimap<String, Item> mapOfDishes = ArrayListMultimap.create();
         items.stream()
                 .filter(i -> i.getAvailability().equals("Y"))
-                .forEach(i->mapOfDishes.put(i.getType(),i));
+                .forEach(i -> mapOfDishes.put(i.getType(), i));
+        model.addAttribute("numberOfItems", cart.getOrder().getItemList().size());
         model.addAttribute("mapOfDishes", mapOfDishes);
         return "home";
     }

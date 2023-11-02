@@ -28,6 +28,8 @@
         <sec:authorize access="hasRole('ADMIN')">
             <a class="btn btn-admin-panel" href="/order/panel">admin panel</a>
         </sec:authorize>
+        <button class="btn cart-numberItems"><a href="/cart" class="text-decoration-none">${numberOfItems}<i
+                class="fa-solid fa-basket-shopping fa-lg"></i></a></button>
         <div class="my-toast my-toast--hidden">
             product added to the order
         </div>
