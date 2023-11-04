@@ -10,6 +10,9 @@
     display: flex;
     background-size: cover;
     background-image: url("../img/cart.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 .greeting-msg {
@@ -70,14 +73,12 @@ i {
     transition: 0.5s;
 
     &:hover {
-        transform: scale(2);
+        transform: scale(2) translate(0, -70px)
     }
 
     &:hover ~ .confirm {
         opacity: 1;
     }
-
-
 }
 
 input[type=radio] {
