@@ -20,7 +20,9 @@
     <div class="container w-60 my-gird">
         <h1 class="menu-text">M E N U</h1>
         <sec:authorize access="isAnonymous()">
-            <a class="btn btn-login" href="/login">login</a>
+            <a class="btn btn-login" href="/login">sign in</a>
+            <button class="btn register"><a href="/register" class="text-decoration-none">sign up<i
+                    class="fa-solid fa-file-signature"></i></a></button>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
             <a class="btn btn-login" href="/logout">logout</a>
@@ -30,6 +32,7 @@
         </sec:authorize>
         <button class="btn cart-numberItems"><a href="/cart" class="text-decoration-none">${numberOfItems}<i
                 class="fa-solid fa-basket-shopping fa-lg"></i></a></button>
+
         <div class="my-toast my-toast--hidden">
             product added to the order
         </div>

@@ -3,9 +3,9 @@
 <html>
 <head>
     <title>update item</title>
-    <link rel="stylesheet" href="/css/addItem.css" type="text/css">
+    <link rel="stylesheet" href="/css/form.css" type="text/css">
 </head>
-<body class="add-item">
+<body class="form">
 <div class="wrapper">
     <form:form method="post" modelAttribute="item">
         <h2>Change item</h2>
@@ -68,6 +68,6 @@
     </form:form>
 
 </div>
-<script src="/itemform.js"></script>
+<script src="/form.js"></script>
 </body>
 </html>

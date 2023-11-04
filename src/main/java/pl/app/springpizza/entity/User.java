@@ -21,8 +21,10 @@ public class User {
     @NotBlank
     private String password;
     @Column(name = "first_name")
+    @NotBlank(message = "enter your name")
     private String firstName;
     @Column(name = "last_name")
+    @NotBlank(message = "enter your last name")
     private String lastName;
     @Column(nullable = false)
     private String role;

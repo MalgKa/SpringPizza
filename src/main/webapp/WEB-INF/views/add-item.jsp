@@ -3,9 +3,9 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="/css/addItem.css" type="text/css">
+    <link rel="stylesheet" href="/css/form.css" type="text/css">
 </head>
-<body class="add-item">
+<body class="form">
 <div class="wrapper">
     <form:form method="post" modelAttribute="item" action="/admin/addItem">
         <h2>ADD DISH TO THE MENU</h2>
@@ -69,6 +69,6 @@
 
 </div>
 
-<script src="/itemform.js"></script>
+<script src="/form.js"></script>
 </body>
 </html>

@@ -59,7 +59,7 @@ h3 {
     }
 }
 
-.btn-admin-panel {
+.btn-admin-panel, .register {
     position: fixed;
     right: 110px;
     top: 20px;
@@ -70,6 +70,10 @@ h3 {
 
     &:hover {
         background-color: #003500;
+        color: white;
+    }
+
+    &:hover > a {
         color: white;
     }
 }
@@ -92,10 +96,9 @@ h3 {
     }
 }
 
-.cart-numberItems a {
+.cart-numberItems a, .register a {
     color: black;
 }
-
 
 i {
     margin-left: 0.5rem;
