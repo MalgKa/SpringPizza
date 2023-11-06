@@ -11,9 +11,15 @@
     align-items: center;
 
 }
-
-
-
+.btn-home{
+    align-self: end;
+    background-color: lightgreen;
+    font-weight: bold;
+    &:hover{
+        background-color: #0e5b0e;
+        color: white;
+    }
+}
 h4 {
     width: 50%;
     line-height: 30px;

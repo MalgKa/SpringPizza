@@ -65,6 +65,14 @@ span {
 
     &:hover {
         background-color: #0a430a;
-        color:white
+        color: white
+    }
+}
+
+.btn {
+    color: #8b7a7a;
+
+    &:hover {
+        color: #591111;
     }
 }

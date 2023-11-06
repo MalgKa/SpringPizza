@@ -13,6 +13,7 @@
 <body class="order-panel">
 
 <div class="container container-center w-50">
+    <a href="/home" class="btn btn-home">MENU</a>
     <h1 class="mb-5 admin-panel-text">Admin Panel</h1>
     <div class="d-md-flex flex-row gap-4 order-panel-flex mb-2">
 
