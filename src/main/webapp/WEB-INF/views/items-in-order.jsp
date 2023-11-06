@@ -4,6 +4,7 @@
 <html>
 <head>
   <title>Items view</title>
+  <script src="https://kit.fontawesome.com/125cf097bb.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/orderDetails.css" type="text/css">
 </head>
 <body class="order-details">
@@ -13,7 +14,7 @@
   </div>
   <div class="items-card">
     <c:forEach var="item" items="${items}">
-      <li>${item.name} - ${item.price} zł <span>(${item.shortDescription})</span></li>
+      <li>${item.name} - ${item.price} zł <span>(${item.shortDescription})</span> <a href="/order/removeItem?itemId=${item.id}&orderId=${orderId}" class="btn"><i class="fa-solid fa-circle-minus"></i></a></li>
     </c:forEach>
   </div>
 </div>
