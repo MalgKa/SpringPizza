@@ -5,6 +5,7 @@ import pl.app.springpizza.entity.Item;
 import pl.app.springpizza.entity.Order;
 import pl.app.springpizza.repository.ItemRepository;
 import pl.app.springpizza.repository.OrderRepository;
+import pl.app.springpizza.repository.UserRepository;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
@@ -15,10 +16,12 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
     private final OrderRepository orderRepository;
+    private final UserRepository userRepository;
 
-    public ItemServiceImpl(ItemRepository itemRepository, OrderRepository orderRepository) {
+    public ItemServiceImpl(ItemRepository itemRepository, OrderRepository orderRepository, UserRepository userRepository) {
         this.itemRepository = itemRepository;
         this.orderRepository = orderRepository;
+        this.userRepository = userRepository;
     }
 
     @Transactional
@@ -41,6 +44,7 @@ public class ItemServiceImpl implements ItemService {
                             .count();
                     order.getItemList().removeIf(i -> i.getId().equals(item.getId()));
                     if (order.getItemList().isEmpty()) {
+                        userRepository.getUserByOrderId(order.getId()).getUserOrders().remove(order);
                         orderRepository.delete(order);
                     } else {
                         double totalPriceReduction = item.getPrice() * itemCount;
