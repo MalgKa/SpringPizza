@@ -1,6 +1,5 @@
 package pl.app.springpizza.item;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,12 +9,17 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pl.app.springpizza.TestFixtures;
 import pl.app.springpizza.entity.Item;
 import pl.app.springpizza.entity.Order;
+import pl.app.springpizza.entity.User;
 import pl.app.springpizza.repository.ItemRepository;
 import pl.app.springpizza.repository.OrderRepository;
+import pl.app.springpizza.repository.UserRepository;
 import pl.app.springpizza.service.ItemServiceImpl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ItemServiceImplTest {
@@ -26,22 +30,24 @@ public class ItemServiceImplTest {
     @Mock
     private ItemRepository mockItemRepository;
 
+    @Mock
+    private UserRepository mockUserRepository;
+
     @InjectMocks
     private ItemServiceImpl itemService;
 
     @Test
     public void givenNullItem_whenRemove_throwException() {
-        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> itemService.removeItem(null));
-        Assertions.assertEquals("Item cannot be null", exception.getMessage());
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> itemService.removeItem(null));
+        assertEquals("Item cannot be null", exception.getMessage());
     }
 
     @Test
     public void givenNonExistingItem_whenRemove_throwException() {
         Item item = Item.builder().id(1L).build();
 
-        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> itemService.removeItem(item));
-        Assertions.assertEquals("Item with 1 does not exist", exception.getMessage());
-
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> itemService.removeItem(item));
+        assertEquals("Item with 1 does not exist", exception.getMessage());
     }
 
     @Test
@@ -53,8 +59,7 @@ public class ItemServiceImplTest {
 
         boolean removed = itemService.removeItem(item);
 
-        Assertions.assertTrue(removed);
-
+        assertTrue(removed);
     }
 
     @Test
@@ -64,13 +69,12 @@ public class ItemServiceImplTest {
 
         Mockito.when(mockItemRepository.existsById(item.getId())).thenReturn(true);
         Mockito.when(mockOrderRepository.findAllByItemListContains(item)).thenReturn(List.of(order));
+        Mockito.when(mockUserRepository.getUserByOrderId(order.getId())).thenReturn(new User());
 
         boolean removed = itemService.removeItem(item);
 
-        Assertions.assertTrue(removed);
-        Assertions.assertTrue(order.getItemList().isEmpty());
-
-
+        assertTrue(removed);
+        assertTrue(order.getItemList().isEmpty());
     }
 
     @Test
@@ -80,10 +84,10 @@ public class ItemServiceImplTest {
 
         Mockito.when(mockItemRepository.existsById(item.getId())).thenReturn(true);
         Mockito.when(mockOrderRepository.findAllByItemListContains(item)).thenReturn(List.of(order));
+        Mockito.when(mockUserRepository.getUserByOrderId(order.getId())).thenReturn(new User());
 
         boolean removed = itemService.removeItem(item);
-        Assertions.assertTrue(removed);
-
+        assertTrue(removed);
         Mockito.verify(mockOrderRepository).delete(order);
     }
 
@@ -96,13 +100,12 @@ public class ItemServiceImplTest {
                 .sum(40.00).build();
 
         Mockito.when(mockItemRepository.existsById(1L)).thenReturn(true);
-
         Mockito.when(mockOrderRepository.findAllByItemListContains(item1)).thenReturn(List.of(order));
 
         boolean removed = itemService.removeItem(item1);
-        Assertions.assertTrue(removed);
 
-        Assertions.assertEquals(10.00, order.getSum());
+        assertTrue(removed);
+        assertEquals(10.00, order.getSum());
 
     }
 
@@ -119,14 +122,12 @@ public class ItemServiceImplTest {
                 .build();
 
         Mockito.when(mockItemRepository.existsById(item1.getId())).thenReturn(true);
-
         Mockito.when(mockOrderRepository.findAllByItemListContains(item1)).thenReturn(List.of(order));
 
         boolean removed = itemService.removeItem(item1);
 
-        Assertions.assertTrue(removed);
-
-        Assertions.assertEquals(30.00, order.getSum());
+        assertTrue(removed);
+        assertEquals(30.00, order.getSum());
     }
 
     @Test
@@ -140,15 +141,26 @@ public class ItemServiceImplTest {
                 .itemList(new ArrayList<>(List.of(item1)))
                 .sum(10.00).build();
 
+        User user = new User();
+        user.setId(1L);
+        user.setUserOrders(new HashSet<>(List.of(order1, order2)));
+
         Mockito.when(mockItemRepository.existsById(item1.getId())).thenReturn(true);
         Mockito.when(mockOrderRepository.findAllByItemListContains(item1)).thenReturn(List.of(order1, order2));
+        Mockito.when(mockUserRepository.getUserByOrderId(order2.getId())).thenReturn(user);
 
         boolean removed = itemService.removeItem(item1);
-        Assertions.assertTrue(removed);
 
-        Assertions.assertEquals(20.00, order1.getSum());
+        assertTrue(removed);
+        assertEquals(20.00, order1.getSum());
         Mockito.verify(mockOrderRepository).delete(order2);
+        Mockito.verify(mockOrderRepository).save(order1);
+        Mockito.verify(mockItemRepository).delete(item1);
 
+        assertEquals(1, order1.getItemList().size());
+        assertTrue(user.getUserOrders().contains(order1));
+        assertEquals(1, user.getUserOrders().size());
+        assertTrue(user.getUserOrders().stream().noneMatch(o -> o.getId().equals(order2.getId())));
     }
 }
 
