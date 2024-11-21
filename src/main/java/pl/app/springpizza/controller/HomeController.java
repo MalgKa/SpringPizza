@@ -24,7 +24,7 @@ public class HomeController {
     }
 
 
-    @GetMapping("/home")
+    @GetMapping({"/home", "/"})
     public String home(Model model) {
         List<Item> items = itemRepository.findAll();
         Multimap<String, Item> mapOfDishes = ArrayListMultimap.create();
