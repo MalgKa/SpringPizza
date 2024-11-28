@@ -1,6 +1,7 @@
 package pl.app.springpizza.controller;
 
 public class Message {
+
     private String title;
     private String content;
 

@@ -13,7 +13,6 @@ import pl.app.springpizza.service.ItemService;
 
 import javax.validation.Valid;
 
-
 @Controller
 @RequestMapping("/admin")
 public class ItemController {
@@ -74,5 +73,4 @@ public class ItemController {
         itemRepository.save(item);
         return "redirect:/admin/itemList";
     }
-
 }

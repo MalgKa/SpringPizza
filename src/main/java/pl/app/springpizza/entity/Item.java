@@ -1,6 +1,5 @@
 package pl.app.springpizza.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Table(name = "items")
 public class Item {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

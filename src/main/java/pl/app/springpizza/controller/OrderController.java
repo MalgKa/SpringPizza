@@ -19,12 +19,10 @@ import java.util.*;
 
 @Controller
 public class OrderController {
+
     private final Cart cart;
-
     private final ItemRepository itemRepository;
-
     private final OrderRepository orderRepository;
-
     private final PlaceRepository placeRepository;
     private final StatusRepository statusRepository;
     private final UserRepository userRepository;

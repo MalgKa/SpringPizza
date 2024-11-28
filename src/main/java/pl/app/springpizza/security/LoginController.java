@@ -6,6 +6,7 @@ import pl.app.springpizza.sessionComponent.Cart;
 
 @Controller
 public class LoginController {
+
     private final Cart cart;
 
     public LoginController(Cart cart) {

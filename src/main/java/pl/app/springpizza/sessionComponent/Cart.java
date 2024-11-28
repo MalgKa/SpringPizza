@@ -14,10 +14,10 @@ public class Cart {
     public Cart() {
         clear();
     }
-   public Order getOrder() {
+
+    public Order getOrder() {
         return order;
     }
-
 
     public void add(Item item) {
         order.getItemList().add(item);

@@ -14,6 +14,7 @@ import java.util.List;
 
 @Service
 public class ItemServiceImpl implements ItemService {
+
     private final ItemRepository itemRepository;
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
@@ -30,12 +31,10 @@ public class ItemServiceImpl implements ItemService {
         if (item == null) {
             throw new IllegalArgumentException("Item cannot be null");
         }
-
         boolean exists = itemRepository.existsById(item.getId());
         if (!exists) {
             throw new IllegalArgumentException(String.format("Item with %d does not exist", item.getId()));
         }
-
         List<Order> relatedOrder = orderRepository.findAllByItemListContains(item);
         relatedOrder.forEach(
                 order -> {
@@ -54,7 +53,6 @@ public class ItemServiceImpl implements ItemService {
                         orderRepository.save(order);
                     }
                 });
-
         itemRepository.delete(item);
         return true;
     }

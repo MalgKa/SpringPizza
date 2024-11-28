@@ -29,8 +29,8 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid User user, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+    public String register(@Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "registration-form";
         }
         user.setActive(true);
@@ -39,5 +39,4 @@ public class UserController {
         userRepository.save(user);
         return "redirect:/home";
     }
-
 }

@@ -10,10 +10,12 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
+
     @Bean
     protected PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
+
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests()
@@ -32,6 +34,7 @@ public class SecurityConfig {
                 .and()
                 .build();
     }
+
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring()

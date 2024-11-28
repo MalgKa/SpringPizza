@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @Controller
 public class HomeController {
+
     private final ItemRepository itemRepository;
     private final Cart cart;
 
@@ -22,7 +23,6 @@ public class HomeController {
         this.itemRepository = itemRepository;
         this.cart = cart;
     }
-
 
     @GetMapping({"/home", "/"})
     public String home(Model model) {
