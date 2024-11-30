@@ -7,10 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.app.springpizza.entity.Item;
-import pl.app.springpizza.entity.Order;
-import pl.app.springpizza.entity.Place;
-import pl.app.springpizza.entity.User;
+import pl.app.springpizza.entity.*;
 import pl.app.springpizza.repository.*;
 import pl.app.springpizza.sessionComponent.Cart;
 
