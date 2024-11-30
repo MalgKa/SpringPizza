@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @Data
 @Entity
@@ -36,7 +37,7 @@ public class Item {
     private String type;
 
     @NotNull(message = "enter price")
-    private Double price;
+    private BigDecimal price;
 
     @Column(name = "img_url")
     private String imgUrl;

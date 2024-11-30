@@ -12,7 +12,10 @@ import pl.app.springpizza.repository.*;
 import pl.app.springpizza.sessionComponent.Cart;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class OrderController {
@@ -46,8 +49,8 @@ public class OrderController {
         BigDecimal sum = cart
                 .getOrder()
                 .getItemList().stream()
-                .map(item -> BigDecimal.valueOf(item.getPrice()))
-                .reduce(BigDecimal.ZERO, (accumulator, price) -> accumulator.add(price));
+                .map(Item::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
         List<Item> sortedItemList = new ArrayList<>(cart.getOrder().getItemList());
         sortedItemList.sort(Comparator.comparingInt(item -> item.getId().intValue()));
         if (authenticatedUser != null) {
@@ -77,7 +80,8 @@ public class OrderController {
     }
 
     @PostMapping("/cart/agreed")
-    public String proceedOrder(@AuthenticationPrincipal UserDetails authenticatedUser, @RequestParam Long placeId, @RequestParam Double sum, Model model) {
+    public String proceedOrder(@AuthenticationPrincipal UserDetails authenticatedUser, @RequestParam Long placeId,
+                               @RequestParam BigDecimal sum, Model model) {
         Order order = cart.getOrder();
         order.setPlace(placeRepository.getById(placeId));
         order.setSum(sum);

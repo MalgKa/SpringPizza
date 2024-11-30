@@ -46,9 +46,9 @@ public class ItemServiceImpl implements ItemService {
                         userRepository.getUserByOrderId(order.getId()).getUserOrders().remove(order);
                         orderRepository.delete(order);
                     } else {
-                        double totalPriceReduction = item.getPrice() * itemCount;
-                        double totalPrice = order.getSum();
-                        double newTotalPrice = BigDecimal.valueOf(totalPrice - totalPriceReduction).setScale(2, RoundingMode.HALF_UP).doubleValue();
+                        BigDecimal totalPriceReduction = item.getPrice().multiply(BigDecimal.valueOf(itemCount));
+                        BigDecimal totalPrice = order.getSum();
+                        BigDecimal newTotalPrice = totalPrice.subtract(totalPriceReduction).setScale(2, RoundingMode.HALF_UP);
                         order.setSum(newTotalPrice);
                         orderRepository.save(order);
                     }

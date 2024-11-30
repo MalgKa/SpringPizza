@@ -70,10 +70,10 @@ public class OrderPanelController {
         List<Item> listOfItemsInOrder = itemRepository.findItemsByOrderId(orderId);
         Item itemToRemove = listOfItemsInOrder.stream()
                 .filter(item -> item.getId().equals(itemId)).findFirst().orElse(null);
-        double sumAfterRemove = order.getSum();
+        BigDecimal sumAfterRemove = order.getSum();
         if (itemToRemove != null) {
             listOfItemsInOrder.remove(itemToRemove);
-            sumAfterRemove = BigDecimal.valueOf(order.getSum() - itemToRemove.getPrice()).setScale(2, RoundingMode.HALF_UP).doubleValue();
+            sumAfterRemove = order.getSum().subtract(itemToRemove.getPrice()).setScale(2, RoundingMode.HALF_UP);
         }
         order.setItemList(listOfItemsInOrder);
         order.setSum(sumAfterRemove);
@@ -91,10 +91,10 @@ public class OrderPanelController {
     }
 
     @GetMapping("/order/discount")
-    public String discount(@RequestParam Long orderId, @RequestParam double sumOfOrder) {
+    public String discount(@RequestParam Long orderId, @RequestParam BigDecimal sumOfOrder) {
         Order order = orderRepository.getOrderById(orderId);
-        double sum = (sumOfOrder - (sumOfOrder * 0.1));
-        double roundedSum = Math.round(sum * 100.0) / 100.0;
+        BigDecimal sum = sumOfOrder.subtract(sumOfOrder.multiply(BigDecimal.valueOf(0.1)));
+        BigDecimal roundedSum = sum.setScale(2, RoundingMode.HALF_UP);
         order.setSum(roundedSum);
         orderRepository.save(order);
         return "redirect:/order/panel";

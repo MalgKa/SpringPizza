@@ -3,6 +3,7 @@ package pl.app.springpizza.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class Order {
     @Column(name = "order_time")
     private LocalDateTime orderTime;
 
-    private Double sum;
+    private BigDecimal sum;
 
     @ManyToOne
     @JoinColumn(name = "place_id")
