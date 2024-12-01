@@ -23,7 +23,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-public class ItemServiceImplTest {
+class ItemServiceImplTest {
 
     @Mock
     private OrderRepository mockOrderRepository;
@@ -38,20 +38,20 @@ public class ItemServiceImplTest {
     private ItemServiceImpl itemService;
 
     @Test
-    public void givenNullItem_whenRemove_throwException() {
+    void givenNullItem_whenRemove_throwException() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> itemService.removeItem(null));
         assertEquals("Item cannot be null", exception.getMessage());
     }
 
     @Test
-    public void givenNonExistingItem_whenRemove_throwException() {
+    void givenNonExistingItem_whenRemove_throwException() {
         Item item = Item.builder().id(1L).build();
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> itemService.removeItem(item));
         assertEquals("Item with 1 does not exist", exception.getMessage());
     }
 
     @Test
-    public void givenItemWithoutRelatedOrder_whenRemove_shouldRemove() {
+    void givenItemWithoutRelatedOrder_whenRemove_shouldRemove() {
         Item item = Item.builder().id(1L).price(BigDecimal.valueOf(12.99)).build();
         Mockito.when(mockItemRepository.existsById(1L)).thenReturn(true);
         Mockito.when(mockOrderRepository.findAllByItemListContains(item)).thenReturn(List.of());
@@ -60,7 +60,7 @@ public class ItemServiceImplTest {
     }
 
     @Test
-    public void givenItemWithRelatedOrder_whenRemove_shouldRemoveItem() {
+    void givenItemWithRelatedOrder_whenRemove_shouldRemoveItem() {
         Item item = Item.builder().id(1L).price(BigDecimal.valueOf(29.99)).build();
         Order order = TestFixtures.orderWithItem(item);
         Mockito.when(mockItemRepository.existsById(item.getId())).thenReturn(true);
@@ -72,7 +72,7 @@ public class ItemServiceImplTest {
     }
 
     @Test
-    public void givenOrderWithLastRelatedItem_whenRemoveItem_shouldDeleteOrder() {
+    void givenOrderWithLastRelatedItem_whenRemoveItem_shouldDeleteOrder() {
         Item item = Item.builder().id(1L).price(BigDecimal.valueOf(29.99)).build();
         Order order = TestFixtures.orderWithItem(item);
         Mockito.when(mockItemRepository.existsById(item.getId())).thenReturn(true);
@@ -84,7 +84,7 @@ public class ItemServiceImplTest {
     }
 
     @Test
-    public void givenTheSameItemsWithRelatedOrder_whenRemoveTheSameItems_shouldUpdateTotalPrice() {
+    void givenTheSameItemsWithRelatedOrder_whenRemoveTheSameItems_shouldUpdateTotalPrice() {
         Item item1 = Item.builder().id(1L).price(BigDecimal.valueOf(15.00)).build();
         Item item2 = Item.builder().id(2L).price(BigDecimal.valueOf(10.00)).build();
         Order order = Order.builder().id(1L)
@@ -98,7 +98,7 @@ public class ItemServiceImplTest {
     }
 
     @Test
-    public void givenOrderWithMultipleItems_whenRemoveItem_shouldUpdateTotalPrice() {
+    void givenOrderWithMultipleItems_whenRemoveItem_shouldUpdateTotalPrice() {
         Item item1 = Item.builder().id(1L).price(BigDecimal.valueOf(10.00)).build();
         Item item2 = Item.builder().id(2L).price(BigDecimal.valueOf(15.00)).build();
         Item item3 = Item.builder().id(3L).price(BigDecimal.valueOf(15.00)).build();
@@ -115,7 +115,7 @@ public class ItemServiceImplTest {
     }
 
     @Test
-    public void givenItemWithMultipleRelatedOrders_whenRemove_shouldUpdateTotalPrice() {
+    void givenItemWithMultipleRelatedOrders_whenRemove_shouldUpdateTotalPrice() {
         Item item1 = Item.builder().id(1L).price(BigDecimal.valueOf(10.00)).build();
         Item item2 = Item.builder().id(2L).price(BigDecimal.valueOf(20.00)).build();
         Order order1 = Order.builder().id(1L)
