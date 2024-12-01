@@ -5,6 +5,7 @@ import pl.app.springpizza.entity.Order;
 import pl.app.springpizza.entity.Place;
 import pl.app.springpizza.entity.Status;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class TestFixtures {
                 .shortDescription("Short description")
                 .description("This is a sample item with a long description.")
                 .type("Sample Type")
-                .price(29.99)
+                .price(BigDecimal.valueOf(29.99))
                 .imgUrl("/img/sample_image.jpg").build();
     }
 
@@ -30,7 +31,6 @@ public class TestFixtures {
                 .name("new")
                 .description("order placed").build();
     }
-
 
     public static Order orderWithItem(Item item) {
         return Order.builder()
@@ -47,16 +47,15 @@ public class TestFixtures {
     public static Order orderWithStatusAndPlace(Status status, Place place) {
         return Order.builder()
                 .orderTime(LocalDateTime.now())
-                .sum(29.99)
+                .sum(BigDecimal.valueOf(29.99))
                 .place(place).build();
     }
-
 
     public static Order orderWithItemAndStatusAndPlace(Item item, Status status, Place place) {
         return Order.builder()
                 .itemList(new ArrayList<>(List.of(item)))
                 .orderTime(LocalDateTime.now())
-                .sum(29.99)
+                .sum(BigDecimal.valueOf(29.99))
                 .status(status)
                 .place(place).build();
     }
