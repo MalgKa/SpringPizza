@@ -28,8 +28,8 @@ public class ItemServiceImpl implements ItemService {
     @Transactional
     @Override
     public boolean removeItem(Item item) {
-        if (item == null) {
-            throw new IllegalArgumentException("Item cannot be null");
+        if (item == null || item.getId() == null) {
+            throw new IllegalArgumentException("Item or item ID cannot be null");
         }
         boolean exists = itemRepository.existsById(item.getId());
         if (!exists) {

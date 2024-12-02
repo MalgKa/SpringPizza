@@ -40,7 +40,7 @@ class ItemServiceImplTest {
     @Test
     void givenNullItem_whenRemove_throwException() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> itemService.removeItem(null));
-        assertEquals("Item cannot be null", exception.getMessage());
+        assertEquals("Item or item ID cannot be null", exception.getMessage());
     }
 
     @Test
