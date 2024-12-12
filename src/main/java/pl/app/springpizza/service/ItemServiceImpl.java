@@ -25,6 +25,21 @@ public class ItemServiceImpl implements ItemService {
         this.userRepository = userRepository;
     }
 
+    @Override
+    public List<Item> getAllItems() {
+        return itemRepository.findAll();
+    }
+
+    @Override
+    public Item getItemById(Long id) {
+        return itemRepository.getItemById(id);
+    }
+
+    @Override
+    public Item save(Item item) {
+        return itemRepository.save(item);
+    }
+
     @Transactional
     @Override
     public boolean removeItem(Item item) {

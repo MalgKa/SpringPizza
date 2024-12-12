@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.app.springpizza.entity.Item;
-import pl.app.springpizza.repository.ItemRepository;
 import pl.app.springpizza.service.ItemService;
 
 import javax.validation.Valid;
@@ -17,11 +16,9 @@ import javax.validation.Valid;
 @RequestMapping("/admin")
 public class ItemController {
 
-    private final ItemRepository itemRepository;
     private final ItemService itemService;
 
-    public ItemController(ItemRepository itemRepository, ItemService itemService) {
-        this.itemRepository = itemRepository;
+    public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
 
@@ -36,32 +33,32 @@ public class ItemController {
         if (result.hasErrors()) {
             return "add-item";
         }
-        itemRepository.save(item);
+        itemService.save(item);
         return "redirect:/admin/addItem";
     }
 
     @GetMapping("/itemList")
     public String ListOfItemsView(Model model) {
-        model.addAttribute("items", itemRepository.findAll());
+        model.addAttribute("items", itemService.getAllItems());
         return "item-list";
     }
 
     @GetMapping("/delete")
     public String deleteItemView(Model model, @RequestParam Long id) {
-        model.addAttribute("item", itemRepository.getItemById(id));
+        model.addAttribute("item", itemService.getItemById(id));
         return "/delete-item";
     }
 
     @PostMapping("/delete")
     public String deleteItem(@RequestParam Long itemId) {
-        Item item = itemRepository.getItemById(itemId);
+        Item item = itemService.getItemById(itemId);
         itemService.removeItem(item);
         return "redirect:/admin/itemList";
     }
 
     @GetMapping("/update")
     public String updateItemView(Model model, @RequestParam Long id) {
-        model.addAttribute("item", itemRepository.getItemById(id));
+        model.addAttribute("item", itemService.getItemById(id));
         return "/update-item";
     }
 
@@ -70,7 +67,7 @@ public class ItemController {
         if (result.hasErrors()) {
             return "update-item";
         }
-        itemRepository.save(item);
+        itemService.save(item);
         return "redirect:/admin/itemList";
     }
 }
