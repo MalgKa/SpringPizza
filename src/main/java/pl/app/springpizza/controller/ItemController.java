@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.app.springpizza.entity.Item;
 import pl.app.springpizza.service.ItemService;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")

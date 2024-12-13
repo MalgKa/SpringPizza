@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.app.springpizza.entity.User;
 import pl.app.springpizza.repository.UserRepository;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 @Controller
 public class UserController {

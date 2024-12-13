@@ -3,7 +3,7 @@ package pl.app.springpizza.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -17,30 +17,23 @@ public class SecurityConfig {
     }
 
     @Bean
-    protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests()
-                .antMatchers("/admin/**", "/order/**").hasRole("ADMIN")
-                .anyRequest().permitAll()
-                .and()
-                .csrf().disable()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/home")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/home")
-                .and()
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/admin/**", "/order/**").hasRole("ADMIN")
+                        .requestMatchers("/img/**", "/css/**").permitAll()
+                        .anyRequest().permitAll()
+                )
+                .csrf(AbstractHttpConfigurer::disable)
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/home")
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/home")
+                )
                 .build();
-    }
-
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring()
-                .mvcMatchers(
-                        "/img/**",
-                        "/css/**"
-                );
     }
 }
