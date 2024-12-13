@@ -53,8 +53,8 @@
         <c:forEach items="${orderList}" var="order">
             <tr>
                 <c:choose>
-                    <c:when test="${orderToedit !=null and orderToedit.id==order.id}">
-                        <form:form method="post" modelAttribute="orderToedit">
+                    <c:when test="${orderToEdit !=null and orderToEdit.id==order.id}">
+                        <form:form method="post" modelAttribute="orderToEdit">
                             <td>${order.id}</td>
                             <td><form:input path="orderTime" class="order-input"/></td>
                             <td><form:select path="place.id" items="${placeList}" itemValue="id" itemLabel="color"
