@@ -127,13 +127,14 @@ i {
     text-align: center;
     border: 1px solid #aaaaaa;
     border-radius: 5px;
-    transition: opacity 0.2s, top 0.2s
+    transition: opacity 0.6s, top 0.4s
 }
 
 .my-toast--visible {
     top: 100px;
     opacity: 1;
     visibility: visible;
+    z-index: 9999
 }
 
 .my-toast--hidden {

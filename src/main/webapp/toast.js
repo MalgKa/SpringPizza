@@ -1,17 +1,27 @@
+function addToCart(event, itemId) {
+    event.preventDefault();
+    fetch(`/addToCart?itemId=${itemId}`, {method: 'GET'})
+        .then(response => {
+            if (response.ok) {
+                Toasty();
+            } else {
+                console.error("Failed to add to cart");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+}
+
 let toastTimeout;
-function Toasty(){
+function Toasty() {
     let mytoast = document.querySelector('.my-toast');
-    console.log(mytoast)
     mytoast.classList.remove("my-toast--hidden")
     mytoast.classList.add("my-toast--visible")
-    console.log("toast")
 
     clearTimeout(toastTimeout);
 
-    toastTimeout = setTimeout(function() {
+    toastTimeout = setTimeout(function () {
         mytoast.classList.remove("my-toast--visible");
         mytoast.classList.add("my-toast--hidden");
-    }, 2000);
-
+    }, 600);
 }
 
