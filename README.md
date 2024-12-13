@@ -43,8 +43,8 @@ https://github.com/MalgKa/SpringPizza/assets/102424519/445dc002-0cc6-45ca-b118-5
 
 The SpringPizza application leverages several modern technologies, including:
 
-- **Java 11**: Programming language and runtime environment used to build the application.
-- **Spring Boot 2.7.16**: For building fast and reliable Java applications.
+- **Java 21**: Programming language and runtime environment used to build the application.
+- **Spring Boot 3.4.0**: For building fast and reliable Java applications.
 - **Spring MVC**: For creating the user interface and handling HTTP requests.
 - **Spring Data JPA**: For easy data access and database management.
 - **Spring Security**: To provide authentication and authorization for users.
@@ -67,18 +67,18 @@ git clone git@github.com:MalgKa/SpringPizza.git
 
 ### Step 2. Check Java Version
 
-The application requires Java 11 or newer to run. Make sure you have the correct version installed by running:
+The application requires Java 21 or newer to run. Make sure you have the correct version installed by running:
 
 ```bash
 java -version
 ```
 
-If Java is not installed or the version is lower than 11, follow the instructions below:
+If Java is not installed or the version is lower than 21, follow the instructions below:
 
 **Windows:**
 
-1. Download the Java JDK 11 installer
-   from [Oracle](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
+1. Download the Java JDK 21 installer
+   from [Oracle](https://www.oracle.com/java/technologies/downloads/#jdk21-windows).
 2. Run the installer and follow the instructions.
 3. Add the Java `bin` directory to your system `PATH` (if not done automatically).
 
@@ -88,7 +88,7 @@ Run the following commands:
 
 ```bash
 sudo apt update
-sudo apt install openjdk-11-jdk
+sudo apt install openjdk-21-jdk
 ```
 
 ### Step 3. Install MySQL
@@ -200,8 +200,6 @@ Once the application starts successfully, it will be accessible at the following
 
 Here are some enhancements and features planned for future updates to the SpringPizza application:
 
-- **Upgrade Java and Spring Boot Version**: Update the application to Java 17 (or higher) and Spring Boot 3 for improved
-    performance and enhanced security.
 - **User Account Activation**: Implement functionality to send confirmation emails for account activation.
 - **Unit and Integration Tests**: Add comprehensive unit and integration tests to ensure code quality and reliability.
 - **Improved User Interface**: Refine the UI for a better user experience, including more responsive design elements.
