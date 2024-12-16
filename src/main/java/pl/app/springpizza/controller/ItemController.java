@@ -46,7 +46,7 @@ public class ItemController {
     @GetMapping("/delete")
     public String deleteItemView(Model model, @RequestParam Long id) {
         model.addAttribute("item", itemService.getItemById(id));
-        return "/delete-item";
+        return "delete-item";
     }
 
     @PostMapping("/delete")
@@ -59,7 +59,7 @@ public class ItemController {
     @GetMapping("/update")
     public String updateItemView(Model model, @RequestParam Long id) {
         model.addAttribute("item", itemService.getItemById(id));
-        return "/update-item";
+        return "update-item";
     }
 
     @PostMapping("/update")
