@@ -5,6 +5,7 @@ import pl.app.springpizza.entity.Item;
 import pl.app.springpizza.entity.Order;
 import pl.app.springpizza.entity.Place;
 import pl.app.springpizza.entity.Status;
+import pl.app.springpizza.exception.OrderNotFoundException;
 import pl.app.springpizza.repository.ItemRepository;
 import pl.app.springpizza.repository.OrderRepository;
 import pl.app.springpizza.repository.PlaceRepository;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -56,9 +58,14 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public List<Item> getSortedItemsByOrderId(Long orderId) {
-        List<Item> items = itemRepository.findItemsByOrderId(orderId);
-        items.sort(Comparator.comparing(Item::getId));
-        return items;
+        Optional<Order> orderById = orderRepository.findById(orderId);
+        if (orderById.isPresent()) {
+            List<Item> items = itemRepository.findItemsByOrderId(orderId);
+            items.sort(Comparator.comparing(Item::getId));
+            return items;
+        } else {
+            throw new OrderNotFoundException(String.format("Order ID %s ? Never heard of it. Double-check and try again.", orderId));
+        }
     }
 
     @Override

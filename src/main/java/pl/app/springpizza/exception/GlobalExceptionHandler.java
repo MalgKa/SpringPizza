@@ -12,4 +12,11 @@ public class GlobalExceptionHandler {
         model.addAttribute("backlink", "/register");
         return "error";
     }
+
+    @ExceptionHandler(OrderNotFoundException.class)
+    public String handleOrderNotFoundException(OrderNotFoundException ex, Model model) {
+        model.addAttribute("message", ex.getMessage());
+        model.addAttribute("backlink", "/order/panel");
+        return "error";
+    }
 }
