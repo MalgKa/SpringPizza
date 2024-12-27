@@ -1,0 +1,21 @@
+.error-page {
+    min-height: 100vh;
+    display: flex;
+    background-size: cover;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../img/error-background.jpg")
+}
+
+.error-container {
+    display: flex;
+    margin-top: 6rem;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1.5rem;
+}
+
+.error-cause {
+    color: #7f0808;
+}
