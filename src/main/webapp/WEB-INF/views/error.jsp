@@ -14,17 +14,27 @@
     <h1 class="error-cause">${error}</h1>
     <c:choose>
         <c:when test="${status==500}">
-            <h1>It looks like we broke something,We're fixing it as fast as we can</h1>
+            <h1>It looks like we broke something, We're fixing it as fast as we can</h1>
+            <a href="/home" class="btn btn-success"> Go to home page <i
+                    class="fa-solid fa-arrow-rotate-left fa-spin fa-spin-reverse"></i></a>
         </c:when>
         <c:when test="${status==404}">
             <h1>The page you're looking for doesn't exist.You might have mistyped the URL</h1>
+            <a href="/home" class="btn btn-success"> Go to home page <i
+                    class="fa-solid fa-arrow-rotate-left fa-spin fa-spin-reverse"></i></a>
         </c:when>
         <c:otherwise>
             <h1>${message}</h1>
+            <c:if test="${not empty backlink}">
+                <a href="${backlink}" class="btn btn-success"> Back <i
+                        class="fa-solid fa-arrow-rotate-left fa-spin fa-spin-reverse"></i></a>
+            </c:if>
+            <c:if test="${empty backlink}">
+                <a href="/home" class="btn btn-success"> Go to home page <i
+                        class="fa-solid fa-arrow-rotate-left fa-spin fa-spin-reverse"></i></a>
+            </c:if>
         </c:otherwise>
     </c:choose>
-    <a href="/home" class="btn btn-success"> Go to home page <i
-            class="fa-solid fa-arrow-rotate-left fa-spin fa-spin-reverse"></i></a>
 </div>
 </body>
 </html>

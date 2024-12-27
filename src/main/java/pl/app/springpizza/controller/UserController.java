@@ -1,25 +1,21 @@
 package pl.app.springpizza.controller;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.app.springpizza.entity.User;
-import pl.app.springpizza.repository.UserRepository;
-
-import jakarta.validation.Valid;
+import pl.app.springpizza.service.UserService;
 
 @Controller
 public class UserController {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/register")
@@ -33,10 +29,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "registration-form";
         }
-        user.setActive(true);
-        user.setRole("USER_ROLE");
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        userService.registerUser(user);
         return "redirect:/home";
     }
 }
