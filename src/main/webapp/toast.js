@@ -4,6 +4,7 @@ function addToCart(event, itemId) {
         .then(response => {
             if (response.ok) {
                 Toasty();
+                updateCartCount();
             } else {
                 console.error("Failed to add to cart");
             }
@@ -11,7 +12,18 @@ function addToCart(event, itemId) {
         .catch(error => console.error("Error:", error));
 }
 
+function updateCartCount() {
+    fetch('/count', {method: 'GET'})
+        .then(response => response.json())
+        .then(data => {
+            const cartCountElement = document.querySelector('.cart-numberItems span');
+            cartCountElement.textContent = data;
+        })
+        .catch(error => console.error("Error fetching cart count:", error));
+}
+
 let toastTimeout;
+
 function Toasty() {
     let mytoast = document.querySelector('.my-toast');
     mytoast.classList.remove("my-toast--hidden")

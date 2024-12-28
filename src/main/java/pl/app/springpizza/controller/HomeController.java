@@ -1,6 +1,7 @@
 package pl.app.springpizza.controller;
 
 import com.google.common.collect.Multimap;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,11 @@ public class HomeController {
         model.addAttribute("numberOfItems", numberOfItems);
         model.addAttribute("mapOfDishes", mapOfDishes);
         return "home";
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Integer> getCartItemCount() {
+        return ResponseEntity.ok(itemService.getNumberOfItemsInCart());
     }
 
     @GetMapping("/item/details")
