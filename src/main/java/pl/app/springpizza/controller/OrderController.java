@@ -33,10 +33,12 @@ public class OrderController {
 
     @GetMapping("/cart")
     public String getCurrentOrder(@AuthenticationPrincipal UserDetails authenticatedUser, Model model) {
+        boolean isCartEmpty = orderService.isCartEmpty();
         if (authenticatedUser != null) {
             User loggedUser = orderService.getAuthenticatedUser(authenticatedUser.getUsername());
             model.addAttribute("loggedUser", loggedUser);
         }
+        model.addAttribute("isCartEmpty", isCartEmpty);
         model.addAttribute("placeList", orderService.getAllPlaces());
         model.addAttribute("sortedItemList", orderService.getSortedItemList(cart));
         model.addAttribute("cart", orderService.getOrder(cart));

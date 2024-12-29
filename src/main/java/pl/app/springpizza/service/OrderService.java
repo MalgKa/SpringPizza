@@ -15,6 +15,8 @@ public interface OrderService {
 
     List<Item> getSortedItemList(Cart cart);
 
+    boolean isCartEmpty();
+
     User getAuthenticatedUser(String username);
 
     void removeItemFromCart(Long itemId);

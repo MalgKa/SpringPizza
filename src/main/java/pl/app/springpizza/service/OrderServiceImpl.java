@@ -54,6 +54,10 @@ public class OrderServiceImpl implements OrderService {
         return itemList;
     }
 
+    public boolean isCartEmpty() {
+        return cart.getOrder().getItemList().isEmpty();
+    }
+
     @Override
     public User getAuthenticatedUser(String username) {
         return userRepository.getWithOrderByUsername(username);
