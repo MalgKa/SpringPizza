@@ -12,25 +12,25 @@
         <div class="form-box">
             <label for="firstName">first name: </label>
             <form:input path="firstName" id="firstName" placeholder="your first name"/>
-            <form:errors path="firstName"/>
+            <form:errors path="firstName" cssClass="error-message"/>
             <p class="error-text">this field cannot be empty</p>
         </div>
         <div class="form-box">
             <label for="firstName">last name: </label>
             <form:input path="lastName" id="lastName" placeholder="your last name"/>
-            <form:errors path="lastName"/>
+            <form:errors path="lastName" cssClass="error-message"/>
             <p class="error-text">this field cannot be empty</p>
         </div>
         <div class="form-box">
             <label for="firstName">nickname: </label>
             <form:input path="username" id="username" placeholder="enter your nick"/>
-            <form:errors path="username"/>
+            <form:errors path="username" cssClass="error-message"/>
             <p class="error-text">this field cannot be empty</p>
         </div>
         <div class="form-box">
             <label for="password">password: </label>
             <form:input path="password" id="password" placeholder="enter password"/>
-            <form:errors path="password"/>
+            <form:errors path="password" cssClass="error-message"/>
             <p class="error-text">this field cannot be empty</p>
         </div>
         <div class="control-buttons">
